@@ -1,13 +1,14 @@
 package example;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import java.io.IOException;
+import java.util.List;
 
-/**
- * Created by drew on 2015-05-12.
- */
 // The Java class will be hosted at the URI path "/helloworld"
 @Path("/helloworld")
 public class HelloWorld {
@@ -17,20 +18,33 @@ public class HelloWorld {
     @Produces("text/plain")
     public String getClichedMessage() {
         // Return some cliched textual content
+
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("j");
+        EntityManager em = factory.createEntityManager();
+        printDB(em);
+
+        em.getTransaction().begin();
+        Ent ent = new Ent();
+        ent.setName("FirstName");
+        ent.setSurname("Surname");
+        em.persist(ent);
+        em.getTransaction().commit();
+
+        printDB(em);
+
+        em.close();
+
         return "Whats upS";
     }
 
-    public static void main(String[] args) throws IOException {
-        /*URI baseUri = UriBuilder.fromUri("http://localhost/").port(8088).build();
-        ResourceConfig config = new ResourceConfig(HelloWorld.class);
-        HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
-
-        System.out.println("Server running");
-        System.out.println("Visit: http://localhost:9998/helloworld");
-        System.out.println("Hit return to stop...");
-        System.in.read();
-        System.out.println("Stopping server");
-        server.stop(0);
-        System.out.println("Server stopped");*/
+    private void printDB(EntityManager em) {
+        Query q = em.createQuery("select e from Ent e");
+        List<Ent> res = q.getResultList();
+        for (Ent e : res) {
+            System.out.println(e.getSurname());
+        }
+        System.out.println(res.size());
     }
+
 }

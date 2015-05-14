@@ -10,7 +10,7 @@
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
             <param-value>
-                example.HelloWorld
+                example.HelloWorld, example.SecondWorld
             </param-value>
         </init-param>
     </servlet>
