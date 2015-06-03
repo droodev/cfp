@@ -43,7 +43,7 @@
       <element id="javaee-facet-resources" facet="wpom/web/Web" />
       <element id="jpa-descriptors" facet="wpom/jpa/JPA" />
       <element id="directory" name="META-INF">
-        <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources/META-INF" />
+        <element id="dir-copy" path="$PROJECT_DIR$/META-INF" />
       </element>
     </root>
   </artifact>
