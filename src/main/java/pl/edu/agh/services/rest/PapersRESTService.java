@@ -30,7 +30,7 @@ public class PapersRESTService {
     }
 
     @GET
-    @Path("/del/{id}")
+    @Path("/delete/{id}")
     @Produces("application/json")
     public String deletePaper(@PathParam("id") long paperID) {
         papersManager.removePaper(paperID);

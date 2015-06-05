@@ -6,23 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="580ea4b7-0d19-4bca-a574-97878e4314af" name="Default" comment="Simple REST architecture created! Simple journals and papers CRUDs are now handled. Aggressive programming mode -- no error checking at all!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/JournalsManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/JournalsRESTService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Paper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/PapersManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java" />
-      <change type="DELETED" beforePath="C:\staz\system\wpom\src\main\java\example\Ent.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\staz\system\wpom\src\main\java\example\HelloWorld.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\staz\system\wpom\src\main\java\example\SecondWorld.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\staz\system\wpom\src\main\java\pl\edu\agh\services\JournalService.java" afterPath="" />
+    <list default="true" id="580ea4b7-0d19-4bca-a574-97878e4314af" name="Default" comment="Minor name and paths fixes">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/tomcatWar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/tomcatWar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wpom.iml" afterPath="$PROJECT_DIR$/wpom.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/wpom_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/wpom_war_exploded.xml" />
     </list>
     <ignored path="wpom.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,8 +59,8 @@
       <file leaf-file-name="Paper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Paper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="714">
-              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="714">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="14" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#557#558#0" expanded="true" />
@@ -87,18 +74,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Journal.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Journal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33197555" vertical-offset="602" max-vertical-offset="1173">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
+              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="18" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#455#462#0" expanded="true" />
-                <element signature="e#710#711#0" expanded="true" />
-                <element signature="e#775#776#0" expanded="true" />
-                <element signature="e#1080#1081#0" expanded="true" />
-                <element signature="e#1113#1114#0" expanded="true" />
+                <element signature="e#454#461#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
+                <element signature="e#771#772#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1107#1108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,8 +106,8 @@
       <file leaf-file-name="JournalsManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/JournalsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="1411">
-              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1411">
+              <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#880#881#0" expanded="true" />
@@ -131,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PapersRESTService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PapersRESTService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="397" max-vertical-offset="782">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.49894738" vertical-offset="307" max-vertical-offset="782">
+              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,8 +133,8 @@
       <file leaf-file-name="JournalsRESTService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/JournalsRESTService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="1139">
-              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="57" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,6 +147,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="droodev" />
         <option value="drew" />
       </list>
     </option>
@@ -195,13 +183,14 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/rest/PaperService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/JournalService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/PaperService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/rest/PaperREST.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/rest/JournaREST.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/JournaREST.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/PapersManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/JournalsRESTService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/JournalsManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java" />
       </list>
     </option>
   </component>
@@ -218,7 +207,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="1616" />
-    <option name="height" value="916" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -356,6 +345,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="agh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wpom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wpom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -930,7 +949,7 @@
       <workItem from="1431600002566" duration="9457000" />
       <workItem from="1433317515436" duration="590000" />
       <workItem from="1433318146827" duration="11575000" />
-      <workItem from="1433441016789" duration="9540000" />
+      <workItem from="1433441016789" duration="10567000" />
     </task>
     <task id="LOCAL-00001" summary="Added JPA with Hibernate vendor. As backend base, temporarily DebryDB in-memory Database.">
       <created>1431608228545</created>
@@ -944,11 +963,17 @@
       <option name="project" value="LOCAL" />
       <updated>1433329734836</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Simple REST architecture created! Simple journals and papers CRUDs are now handled. Aggressive programming mode -- no error checking at all!">
+      <created>1433487295079</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1433487295079</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40774000" />
+    <option name="totallyTimeSpent" value="41801000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -971,7 +996,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1616" height="916" extended-state="0" />
+    <frame x="-7" y="0" width="1616" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -991,7 +1016,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3388535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34590378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1065,7 +1090,8 @@
     <MESSAGE value="Many changes. Architecture redesigned for JavaEE (EJB and JPA). Some examples of JAX-RS shown and works." />
     <MESSAGE value="Simple REST architecture created! Simple journals and papers are now handled." />
     <MESSAGE value="Simple REST architecture created! Simple journals and papers CRUDs are now handled. Aggressive programming mode -- no error checking at all!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simple REST architecture created! Simple journals and papers CRUDs are now handled. Aggressive programming mode -- no error checking at all!" />
+    <MESSAGE value="Minor name and paths fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor name and paths fixes" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1109,11 +1135,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#455#462#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#454#461#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1163,11 +1189,11 @@
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#455#462#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#454#461#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1362,16 +1388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="397" max-vertical-offset="782">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/PapersManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.6896553" vertical-offset="0" max-vertical-offset="731">
@@ -1382,10 +1398,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#454#461#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Paper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="714">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="714">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="14" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#557#558#0" expanded="true" />
@@ -1398,20 +1429,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/JournalsRESTService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="1139">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/managers/JournalsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="1411">
-          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1411">
+          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#880#881#0" expanded="true" />
@@ -1421,17 +1442,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/model/Journal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/JournalsRESTService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33197555" vertical-offset="602" max-vertical-offset="1173">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="57" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#455#462#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1113#1114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/services/rest/PapersRESTService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49894738" vertical-offset="307" max-vertical-offset="782">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

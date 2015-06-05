@@ -16,15 +16,15 @@ public class Journal {
     private long id;
     private String base64Logo;
     private String name;
-    private String constentToPublish;
+    private String consentToPublish;
 
     @OneToMany
     private Collection<Paper> papers = new ArrayList<Paper>();
 
-    public Journal(String name, String constentToPublish, String base64Logo) {
+    public Journal(String name, String consentToPublish, String base64Logo) {
         this.base64Logo = base64Logo;
         this.name = name;
-        this.constentToPublish = constentToPublish;
+        this.consentToPublish = consentToPublish;
     }
 
     public Collection<Paper> getPapers() {
@@ -43,8 +43,8 @@ public class Journal {
         return name;
     }
 
-    public String getConstentToPublish() {
-        return constentToPublish;
+    public String getConsentToPublish() {
+        return consentToPublish;
     }
 
     public void addPaper(Paper paper) {
@@ -64,7 +64,7 @@ public class Journal {
     }
 
     public String toString() {
-        return String.format("Journal:{\n%s\n%s\n%s\n}", getName(), getConstentToPublish(), getBase64Logo());
+        return String.format("Journal:{\n%s\n%s\n%s\n}", getName(), getConsentToPublish(), getBase64Logo());
     }
 
 
