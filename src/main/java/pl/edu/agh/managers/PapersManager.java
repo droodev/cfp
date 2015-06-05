@@ -1,17 +1,24 @@
 package pl.edu.agh.managers;
 
+import pl.edu.agh.model.Author;
 import pl.edu.agh.model.Paper;
 
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Singleton
 public class PapersManager {
 
     @PersistenceContext
     private EntityManager em;
+
+    @EJB
+    private AuthorsManager authorManger;
 
     public long addPaper(Paper paper) {
         em.persist(paper);
@@ -23,6 +30,24 @@ public class PapersManager {
         if (paperToRemove != null) {
             em.remove(paperToRemove);
         }
+    }
+
+    public Collection<Author> getAllAuthors(long id) {
+        Paper paper = getPaperById(id);
+        if (paper != null) {
+            return paper.getAuthors();
+        }
+        return new ArrayList<Author>();
+    }
+
+    public long addAuthor(long paperID, Author author) {
+        Paper paper = getPaperById(paperID);
+        if (paper != null) {
+            paper.addAuthor(author);
+        }
+        long newAuthorID = authorManger.addAuthor(author);
+        em.persist(paper);
+        return newAuthorID;
     }
 
     private Paper getPaperById(long id) {

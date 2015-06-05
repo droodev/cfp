@@ -20,6 +20,7 @@ public class PapersRESTService {
     @EJB
     private PapersManager papersManager;
 
+
     @POST
     @Path("/new")
     @Produces("application/json")
@@ -35,6 +36,13 @@ public class PapersRESTService {
     public String deletePaper(@PathParam("id") long paperID) {
         papersManager.removePaper(paperID);
         return new Gson().toJson("OK");
+    }
+
+    @GET
+    @Path("/{id}/getAuthors")
+    @Produces("application/json")
+    public String getAllAuthors(@PathParam("id") long paperID) {
+        return new Gson().toJson(papersManager.getAllAuthors(paperID));
     }
 
 }

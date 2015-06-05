@@ -1,18 +1,20 @@
 package pl.edu.agh.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 public class Paper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
     private String financialDisclosure;
+
+    @OneToMany
+    private Collection<Author> authors = new ArrayList<Author>();
 
     protected Paper() {
     }
@@ -32,5 +34,13 @@ public class Paper {
 
     public String getFinancialDisclosure() {
         return financialDisclosure;
+    }
+
+    public Collection<Author> getAuthors() {
+        return Collections.unmodifiableCollection(authors);
+    }
+
+    public void addAuthor(Author author) {
+        authors.add(author);
     }
 }
