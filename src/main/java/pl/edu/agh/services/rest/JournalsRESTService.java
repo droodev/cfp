@@ -15,7 +15,7 @@ public class JournalsRESTService {
     @EJB
     private JournalsManager journalsManager;
 
-    @Path("/new")
+    @Path("/")
     @POST
     @Produces("application/json")
     public String createNewJournal(@QueryParam("name") String name,
@@ -24,7 +24,7 @@ public class JournalsRESTService {
         return new Gson().toJson(journalsManager.addJournal(new Journal(name, consentToPublish, base64Logo)));
     }
 
-    @Path("/get/{id}")
+    @Path("/{id}")
     @GET
     @Produces("application/json")
     public String getJournal(@PathParam("id") long id) {
@@ -36,15 +36,15 @@ public class JournalsRESTService {
         return gson.toJson(j);
     }
 
-    @Path("/delete/{id}")
-    @GET
+    @Path("/{id}")
+    @DELETE
     @Produces("application/json")
     public String deleteJournal(@PathParam("id") long id) {
         journalsManager.deleteJournal(id);
         return new Gson().toJson("OK");
     }
 
-    @Path("/getAll")
+    @Path("/")
     @GET
     @Produces("application/json")
     public String getAllJournals() {
@@ -53,7 +53,7 @@ public class JournalsRESTService {
     }
 
     @GET
-    @Path("/{id}/getPapers")
+    @Path("/{id}/papers")
     @Produces("application/json")
     public String getAllPapersOfJournal(@PathParam("id") long journalID) {
         Gson gson = new Gson();

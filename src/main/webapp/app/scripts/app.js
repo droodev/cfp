@@ -8,9 +8,10 @@ angular
     'ngRoute',
     'ngSanitize',
     'restangular',
-    'ngTouch'
+    'ngTouch',
+    'picardy.fontawesome'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, RestangularProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/new_paper/new_paper.html',
@@ -23,4 +24,5 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+    RestangularProvider.setBaseUrl('http://localhost:8080/');
   });

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('autorApp')
-  .controller('AdminController', function ($scope, JournalService) {
-    $scope.journal = {};
+  .controller('AdminController', function ($scope, Restangular) {
+    $scope.newJournal = {};
 
-    function addJournal() {
-      JournalService.create($scope.journal);
+    $scope.addJournal = function() {
+      Restangular.all('journals').post($scope.newJournal);
     }
 
   });

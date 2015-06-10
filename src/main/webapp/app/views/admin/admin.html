@@ -1,12 +1,12 @@
-<form name="newsearch" class="form-horizontal" ng-submit="addJournal()">
+<form name="newjournal" class="form-horizontal" ng-submit="addJournal()">
   <div class="form-group">
     <label>Journal name</label>
-    <input ng-model="journal.name" class="form-control">
+    <input required ng-model="newJournal.name" class="form-control">
   </div>
 
   <div class="form-group">
     <label>Consent to publish</label>
-    <textarea required ng-model="journal.consentToPublish" ng-trim="false"
+    <textarea required ng-model="newJournal.consentToPublish" ng-trim="false"
               class="form-control" style="resize: none" rows="15"></textarea>
 
   </div>

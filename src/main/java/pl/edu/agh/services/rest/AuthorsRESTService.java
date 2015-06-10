@@ -21,7 +21,7 @@ public class AuthorsRESTService {
 
 
     @POST
-    @Path("/new")
+    @Path("/")
     @Produces("application/json")
     public String createNewAuthor(@QueryParam("paperID") long paperID,
                                   @QueryParam("name") String name,
@@ -32,8 +32,8 @@ public class AuthorsRESTService {
         return new Gson().toJson(papersManager.addAuthor(paperID, new Author(name, surname, affiliation, contribution, contributionValue)));
     }
 
-    @GET
-    @Path("/delete/{id}")
+    @DELETE
+    @Path("/{id}")
     @Produces("application/json")
     public String deleteAuthor(@PathParam("id") long authorID) {
         authorsManager.removeAuthor(authorID);

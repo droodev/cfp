@@ -22,7 +22,7 @@ public class PapersRESTService {
 
 
     @POST
-    @Path("/new")
+    @Path("/")
     @Produces("application/json")
     public String createNewPaper(@QueryParam("journalID") long journalID,
                                  @QueryParam("name") String paperName,
@@ -30,8 +30,8 @@ public class PapersRESTService {
         return new Gson().toJson(journalsManager.addPaper(journalID, new Paper(paperName, financialDisclosure)));
     }
 
-    @GET
-    @Path("/delete/{id}")
+    @DELETE
+    @Path("/{id}")
     @Produces("application/json")
     public String deletePaper(@PathParam("id") long paperID) {
         papersManager.removePaper(paperID);
@@ -39,7 +39,7 @@ public class PapersRESTService {
     }
 
     @GET
-    @Path("/{id}/getAuthors")
+    @Path("/{id}/authors")
     @Produces("application/json")
     public String getAllAuthors(@PathParam("id") long paperID) {
         return new Gson().toJson(papersManager.getAllAuthors(paperID));
