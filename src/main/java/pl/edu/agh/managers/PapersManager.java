@@ -22,6 +22,9 @@ public class PapersManager {
 
     public long addPaper(Paper paper) {
         em.persist(paper);
+        for (Author a : paper.getAuthors()) {
+            authorManger.addAuthor(a);
+        }
         return paper.getId();
     }
 
@@ -29,6 +32,9 @@ public class PapersManager {
         Paper paperToRemove = getPaperById(paperID);
         if (paperToRemove != null) {
             em.remove(paperToRemove);
+        }
+        for (Author author : paperToRemove.getAuthors()) {
+            authorManger.removeAuthor(author.getId());
         }
     }
 

@@ -1,10 +1,8 @@
 package pl.edu.agh.services.rest;
 
-import com.google.gson.Gson;
-import pl.edu.agh.model.Paper;
 import pl.edu.agh.managers.JournalsManager;
 import pl.edu.agh.managers.PapersManager;
-
+import pl.edu.agh.model.Paper;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,14 +18,12 @@ public class PapersRESTService {
     @EJB
     private PapersManager papersManager;
 
-
     @POST
     @Path("/")
     @Produces("application/json")
-    public String createNewPaper(@QueryParam("journalID") long journalID,
-                                 @QueryParam("name") String paperName,
-                                 @QueryParam("finanacialDisc") String financialDisclosure) {
-        return new Gson().toJson(journalsManager.addPaper(journalID, new Paper(paperName, financialDisclosure)));
+    @Consumes("application/json")
+    public long createNewPaper(@QueryParam("journalID") long journalID, Paper paper) {
+        return journalsManager.addPaper(journalID, paper);
     }
 
     @DELETE
@@ -35,14 +31,16 @@ public class PapersRESTService {
     @Produces("application/json")
     public String deletePaper(@PathParam("id") long paperID) {
         papersManager.removePaper(paperID);
-        return new Gson().toJson("OK");
+        return "OK";
     }
 
+    /*
     @GET
     @Path("/{id}/authors")
     @Produces("application/json")
-    public String getAllAuthors(@PathParam("id") long paperID) {
-        return new Gson().toJson(papersManager.getAllAuthors(paperID));
+    public Collection<Author> getAllAuthors(@PathParam("id") long paperID) {
+        return papersManager.getAllAuthors(paperID);
     }
+    */
 
 }

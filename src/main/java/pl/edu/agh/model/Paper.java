@@ -13,7 +13,7 @@ public class Paper {
     private String name;
     private String financialDisclosure;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Collection<Author> authors = new ArrayList<Author>();
 
     protected Paper() {

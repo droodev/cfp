@@ -1,12 +1,14 @@
 package pl.edu.agh.services.rest;
 
-import com.google.gson.Gson;
-import pl.edu.agh.model.Journal;
 import pl.edu.agh.managers.JournalsManager;
+import pl.edu.agh.model.Journal;
+import pl.edu.agh.model.Paper;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
+import java.util.Collection;
+import java.util.List;
 
 @Path("/journals")
 @Stateless
@@ -18,22 +20,21 @@ public class JournalsRESTService {
     @Path("/")
     @POST
     @Produces("application/json")
-    public String createNewJournal(@QueryParam("name") String name,
-                                   @QueryParam("consToPublish") String consentToPublish,
-                                   @QueryParam("logo") String base64Logo) {
-        return new Gson().toJson(journalsManager.addJournal(new Journal(name, consentToPublish, base64Logo)));
+    public long createNewJournal(@QueryParam("name") String name,
+                                 @QueryParam("consToPublish") String consentToPublish,
+                                 @QueryParam("logo") String base64Logo) {
+        return journalsManager.addJournal(new Journal(name, consentToPublish, base64Logo));
     }
 
     @Path("/{id}")
     @GET
     @Produces("application/json")
-    public String getJournal(@PathParam("id") long id) {
+    public Journal getJournal(@PathParam("id") long id) {
         Journal j = journalsManager.getJournal(id);
         if (j == null) {
-            return "No Journal";
+            return null;
         }
-        Gson gson = new Gson();
-        return gson.toJson(j);
+        return j;
     }
 
     @Path("/{id}")
@@ -41,22 +42,20 @@ public class JournalsRESTService {
     @Produces("application/json")
     public String deleteJournal(@PathParam("id") long id) {
         journalsManager.deleteJournal(id);
-        return new Gson().toJson("OK");
+        return "OK";
     }
 
     @Path("/")
     @GET
     @Produces("application/json")
-    public String getAllJournals() {
-        return new Gson().toJson(journalsManager.getAll());
-
+    public List<Journal> getAllJournals() {
+        return journalsManager.getAll();
     }
 
     @GET
     @Path("/{id}/papers")
     @Produces("application/json")
-    public String getAllPapersOfJournal(@PathParam("id") long journalID) {
-        Gson gson = new Gson();
-        return gson.toJson(journalsManager.getAllPapers(journalID));
+    public Collection<Paper> getAllPapersOfJournal(@PathParam("id") long journalID) {
+        return journalsManager.getAllPapers(journalID);
     }
 }

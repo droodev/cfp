@@ -8,7 +8,6 @@ import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -32,6 +31,9 @@ public class JournalsManager {
         if (journalToRemove != null) {
             em.remove(journalToRemove);
         }
+        for (Paper paper : journalToRemove.getPapers()) {
+            papersManager.removePaper(paper.getId());
+        }
     }
 
     public Journal getJournal(long id) {
@@ -39,10 +41,10 @@ public class JournalsManager {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Long> getAll() {
-        Query q = em.createQuery("SELECT journal.id FROM Journal journal");
+    public List<Journal> getAll() {
+        Query q = em.createQuery("SELECT journal FROM Journal journal");
         List results = q.getResultList();
-        return (List<Long>) results;
+        return (List<Journal>) results;
     }
 
     private Journal getJournalById(long id) {
