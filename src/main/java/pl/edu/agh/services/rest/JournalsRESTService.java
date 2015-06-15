@@ -23,6 +23,7 @@ public class JournalsRESTService {
     public long createNewJournal(@QueryParam("name") String name,
                                  @QueryParam("consToPublish") String consentToPublish,
                                  @QueryParam("logo") String base64Logo) {
+        System.out.println(String.format("%s, %s, %s", name, consentToPublish, base64Logo));
         return journalsManager.addJournal(new Journal(name, consentToPublish, base64Logo));
     }
 
