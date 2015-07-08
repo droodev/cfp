@@ -6,7 +6,7 @@ angular.module('autorApp')
     $scope.newJournal.logo = "HJJSDJJ";
 
     $scope.addJournal = function() {
-      Restangular.all('journals').post($scope.newJournal);
+      Restangular.all('journals').customPOST({},"",$scope.newJournal,{});
     }
 
   });
