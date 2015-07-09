@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="wpom:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="wpom-1.war">
-      <element id="artifact" artifact-name="wpom:war exploded" />
-    </root>
-  </artifact>
-</component>
