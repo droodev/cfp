@@ -21,6 +21,10 @@ angular
         templateUrl: 'views/admin/admin.html',
         controller: 'AdminController'
       })
+      .when('/journals', {
+        templateUrl: 'views/journals/journals.html',
+        controller: 'JournalsController'
+      })
       .otherwise({
         redirectTo: '/'
       });
