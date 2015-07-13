@@ -40,43 +40,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.22" level="application_server_libraries" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-catalina:7.0.50" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-servlet-api:7.0.50" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-juli:7.0.50" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-annotations-api:7.0.50" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-api:7.0.50" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-util:7.0.50" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-cors:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-api:2.6.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.1.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.woodstox:stax2-api:3.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.ws.xmlschema:xmlschema-core:2.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.7.1" level="project" />
-    <orderEntry type="library" name="Maven: wsdl4j:wsdl4j:1.6.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-core:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.1.13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxrs:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.ws.rs:jsr311-api:1.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-bindings-xml:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.6.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:6.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: net.sourceforge.serp:serp:1.15.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: junit:junit:3.8.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.xbean:xbean-asm5-shaded:3.17" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.xml.stream:stax-api:1.0-2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-jpa_2.0_spec:1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa-jest:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa-kernel:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa-lib:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa-persistence:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa-persistence-jdbc:2.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.openjpa:openjpa-jdbc:2.4.0" level="project" />
+    <orderEntry type="library" name="Maven: javax:javaee-api:6.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
   </component>
 </module>
