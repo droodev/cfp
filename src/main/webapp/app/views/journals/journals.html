@@ -1,15 +1,37 @@
-<div name="journals">
-  <ul>
-    <li ng-repeat="journal in journals">
-      <p>
-      <span>ID:</span><span>{{journal.id}}</span>
-      </p>
-      <p>
-        <span>Name:</span><span>{{journal.name}}</span>
-      </p>
-      <p>
-        <span>Consent to publish:</span><span>{{journal.consentToPublish}}</span>
-      </p>
-    </li>
-  </ul>
+<div class="panel panel-default">
+  <div class="panel-heading">Papers</div>
+  <div class="panel-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-11">
+          <ul class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="journal in journals">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-11">
+                    <p>
+                      <span>Name:</span><span>{{journal.name}}</span>
+                    </p>
+                    <p>
+                      <span>Consent to publish:</span><span>{{journal.consentToPublish}}</span>
+                    </p>
+                  </div>
+                  <div class="col-md-1">
+                    <button type="button" class="btn btn-default" ng-click="remove()">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </ul>
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

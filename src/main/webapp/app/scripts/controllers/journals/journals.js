@@ -8,6 +8,10 @@ angular.module('autorApp')
     }, function error(reason){
       alert(reason.status)
     });
+
+    $scope.remove = function(){
+      alert("Removed")
+    }
     //alert($scope.journals)
 
     /*
