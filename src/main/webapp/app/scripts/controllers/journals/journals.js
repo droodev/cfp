@@ -9,15 +9,7 @@ angular.module('autorApp')
       alert(reason.status)
     });
 
-    $scope.remove = function(){
-      alert("Removed")
+    $scope.remove = function(par) {
+      Restangular.one('journals', par).remove();
     }
-    //alert($scope.journals)
-
-    /*
-    $scope.addJournal = function() {
-      Restangular.all('journals').customPOST({},"",$scope.newJournal,{});
-    }
-    */
-
   });
