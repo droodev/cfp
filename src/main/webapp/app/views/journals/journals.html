@@ -5,17 +5,17 @@
       <div class="row">
         <div class="col-md-11">
           <ul class="list-group">
-            <a href="#" class="list-group-item" ng-repeat="journal in journals">
+           <div class="list-group-item" ng-repeat="journal in journals">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-md-11">
+                  <a href= "#" class="col-md-11">
                     <p>
-                      <span>Name:</span><span>{{journal.name}}</span>
+                      <span>Name: </span><span>{{journal.name}}</span>
                     </p>
                     <p>
-                      <span>Consent to publish:</span><span>{{journal.consentToPublish}}</span>
+                      <span>Consent to publish: </span><span>{{journal.consentToPublish}}</span>
                     </p>
-                  </div>
+                  </a>
                   <div class="col-md-1">
                     <button type="button" class="btn btn-default" ng-click="remove({{journal.id}})">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -23,7 +23,7 @@
                   </div>
                 </div>
               </div>
-            </a>
+           </div>
           </ul>
         </div>
         <div class="col-md-1">
