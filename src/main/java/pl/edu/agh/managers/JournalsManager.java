@@ -26,14 +26,16 @@ public class JournalsManager {
         return journal.getId();
     }
 
-    public void deleteJournal(long id) {
+    public boolean deleteJournal(long id) {
         Journal journalToRemove = getJournalById(id);
         if (journalToRemove != null) {
             em.remove(journalToRemove);
+            for (Paper paper : journalToRemove.getPapers()) {
+                papersManager.removePaper(paper.getId());
+            }
+            return true;
         }
-        for (Paper paper : journalToRemove.getPapers()) {
-            papersManager.removePaper(paper.getId());
-        }
+        return false;
     }
 
     public Journal getJournal(long id) {

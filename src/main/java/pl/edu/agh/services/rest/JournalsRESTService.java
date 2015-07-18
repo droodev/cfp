@@ -7,6 +7,7 @@ import pl.edu.agh.model.Paper;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import java.util.Collection;
 import java.util.List;
 
@@ -41,9 +42,11 @@ public class JournalsRESTService {
     @Path("/{id}")
     @DELETE
     @Produces("application/json")
-    public String deleteJournal(@PathParam("id") long id) {
-        journalsManager.deleteJournal(id);
-        return "OK";
+    public Response deleteJournal(@PathParam("id") long id) {
+        if(journalsManager.deleteJournal(id)){
+            return Response.ok("OK").build();
+        }
+        return Response.status(404).build();
     }
 
     @Path("/")

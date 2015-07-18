@@ -10,6 +10,14 @@ angular.module('autorApp')
     });
 
     $scope.remove = function(par) {
-      Restangular.one('journals', par).remove();
+      Restangular.one('journals', par).remove().then(function(res){
+        for(var i = $scope.journals.length - 1; i >= 0; i--) {
+          if($scope.journals[i].id === par) {
+            $scope.journals.splice(i, 1)
+          }
+        }
+      }, function(res){
+        alert(res.status)
+      });
     }
   });
