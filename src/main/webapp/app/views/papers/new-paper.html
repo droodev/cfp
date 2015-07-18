@@ -1,7 +1,7 @@
 <form name="newpaper" class="form-horizontal" ng-submit="addPaper()">
   <div class="form-group">
     <label>Paper title</label>
-    <input required ng-model="newJournal.name" class="form-control">
+    <input required ng-model="newPaper.name" class="form-control">
   </div>
 
   <div class="panel panel-default form-group">
@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="author in authors">
+        <tr ng-repeat="author in newPaper.authors">
           <td>
             <input ng-model="author.name" class="form-control">
           </td>
@@ -34,7 +34,7 @@
             <input ng-model="author.contribution" class="form-control">
           </td>
           <td>
-            <input ng-model="author.totalContribution" class="form-control">
+            <input ng-model="author.contributionValue" class="form-control">
           </td>
           <td>
             <button type="button" class="btn btn-default" ng-click="deleteAuthor($index)">
@@ -55,7 +55,7 @@
 
   <div class="form-group">
     <label>Financial disclosure</label>
-    <textarea required ng-model="newJournal.consentToPublish" ng-trim="false"
+    <textarea required ng-model="newPaper.financialDisclosure" ng-trim="false"
               class="form-control" style="resize: none" rows="4"></textarea>
 
   </div>

@@ -32,6 +32,9 @@ angular
         templateUrl: 'views/papers/new-paper.html',
         controller: 'NewPaperController'
       })
+      .when('/confirmation', {
+        templateUrl: 'views/papers/confirmation.html',
+      })
       .otherwise({
         redirectTo: '/'
       });

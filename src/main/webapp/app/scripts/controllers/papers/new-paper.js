@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('autorApp')
-  .controller('NewPaperController', function ($scope) {
+  .controller('NewPaperController', function ($scope, $location, Restangular) {
 
-    $scope.authors = [{}];
+    $scope.newPaper = {authors: [{}]};
 
     $scope.addAuthor = function() {
       $scope.authors.push({});
@@ -14,7 +14,12 @@ angular.module('autorApp')
     }
 
     $scope.addPaper = function() {
-      console.log("Adding paper");
+      Restangular.all('papers').customPOST({},"",$scope.newPaper,{}).then(function(res){
+        $location.path('/confirmation');
+      }, function(res){
+        alert(res.status)
+      });
+
     }
 
   });
