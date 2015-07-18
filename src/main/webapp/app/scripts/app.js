@@ -14,8 +14,7 @@ angular
   .config(function ($routeProvider, RestangularProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/new_paper/new_paper.html',
-        controller: 'NewPaperController'
+        redirectTo: '/journals'
       })
       .when('/admin', {
         templateUrl: 'views/admin/admin.html',
