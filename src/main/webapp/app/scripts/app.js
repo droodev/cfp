@@ -16,13 +16,21 @@ angular
       .when('/', {
         redirectTo: '/journals'
       })
-      .when('/admin', {
-        templateUrl: 'views/admin/admin.html',
-        controller: 'AdminController'
+      .when('/new_journal', {
+        templateUrl: 'views/journals/new-journal.html',
+        controller: 'NewJournalController'
       })
       .when('/journals', {
         templateUrl: 'views/journals/journals.html',
         controller: 'JournalsController'
+      })
+      .when('/journal_details/:id', {
+        templateUrl: 'views/journals/journal-details.html',
+        controller: 'JournalDetailsController'
+      })
+      .when('/journals/:id/new_paper', {
+        templateUrl: 'views/papers/new-paper.html',
+        controller: 'NewPaperController'
       })
       .otherwise({
         redirectTo: '/'

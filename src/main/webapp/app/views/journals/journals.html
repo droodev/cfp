@@ -8,7 +8,7 @@
            <div class="list-group-item" ng-repeat="journal in journals">
               <div class="container-fluid">
                 <div class="row">
-                  <a href= "#" class="col-md-11">
+                  <a href= "#/journal_details/{{journal.id}}" class="col-md-11">
                     <p>
                       <span>Name: </span><span>{{journal.name}}</span>
                     </p>
@@ -17,8 +17,8 @@
                     </p>
                   </a>
                   <div class="col-md-1">
-                    <button type="button" class="btn btn-default" ng-click="remove({{journal.id}})">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <button type="button" class="btn btn-default" ng-click="remove(journal.id)">
+                      <fa name="trash"></fa>
                     </button>
                   </div>
                 </div>
@@ -27,8 +27,8 @@
           </ul>
         </div>
         <div class="col-md-1">
-          <a type="button" class="btn btn-default" href="#/admin">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <a type="button" class="btn btn-default" href="#/new_journal">
+            <fa name="plus"></fa>
           </a>
         </div>
       </div>

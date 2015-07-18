@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('autorApp')
-  .controller('AdminController', function ($scope, $location, Restangular) {
+  .controller('NewJournalController', function ($scope, $location, Restangular) {
     $scope.newJournal = {};
     $scope.newJournal.logo = "HJJSDJJ";
 
