@@ -16,4 +16,19 @@ angular.module('autorApp')
         alert(reason.status)
       });
 
+    $scope.deletePaper = function(id){
+      Restangular.one('papers', id).remove().then(function(res){
+        for(var i = $scope.papers.length - 1; i >= 0; i--) {
+          if($scope.papers[i].id === id) {
+            $scope.papers.splice(i, 1)
+          }
+        }
+      }, function(res){
+        alert(res.status)
+      });
+    }
+
+    $scope.getAddingLink = function(){
+      return $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/journals/" + $scope.journal.id + "/new_paper"
+    }
 });

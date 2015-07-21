@@ -1,9 +1,45 @@
-<h1>{{journal.name}}</h1>
-
-<div ng-if="papers.length==0">Brak artykułów</div>
-<div ng-if="papers.length > 0">
-    <div ng-repeat="paper in papers">
-        {{paper.id}}
+<div class="panel panel-default">
+  <div class="panel-heading">{{journal.name}}</div>
+  <div class="panel-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-11">
+          <ul class="list-group">
+            <div class="list-group-item" ng-repeat="paper in papers">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-8">
+                    {{paper.name}}
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" class="btn btn-default"><fa name="eye"/></button>
+                    <button type="button" class="btn btn-default"><fa name="file-pdf-o"/></button>
+                    <button type="button" class="btn btn-default" ng-click="deletePaper({{paper.id}})"><fa name="trash"/></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+        <div class="col-md-1">
+          <a type="button" class="btn btn-default" href="#/journals">
+            <fa name="backward"></fa>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <label class="control-label col-md-3">Adding link:</label>
+        <div class="col-md-8">
+          {{getAddingLink()}}
+        </div>
+        <div class="col-md-1">
+          <a type="button" class="btn btn-default" href="{{getAddingLink()}}">
+            <fa name="external-link"></fa>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
 

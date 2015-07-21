@@ -8,18 +8,19 @@
            <div class="list-group-item" ng-repeat="journal in journals">
               <div class="container-fluid">
                 <div class="row">
-                  <a href= "#/journal_details/{{journal.id}}" class="col-md-11">
+                  <div class="col-md-8">
                     <p>
                       <span>Name: </span><span>{{journal.name}}</span>
                     </p>
                     <p>
                       <span>Consent to publish: </span><span>{{journal.consentToPublish}}</span>
                     </p>
-                  </a>
-                  <div class="col-md-1">
-                    <button type="button" class="btn btn-default" ng-click="remove(journal.id)">
-                      <fa name="trash"></fa>
-                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <a href= "#/journal_details/{{journal.id}}">
+                      <button type="button" class="btn btn-default"><fa name="eye"/></button>
+                    </a>
+                    <button type="button" class="btn btn-default" ng-click="remove({{journal.id}})"><fa name="trash"/></button>
                   </div>
                 </div>
               </div>
