@@ -3,14 +3,27 @@
     <label>Journal name</label>
     <input required ng-model="newJournal.name" class="form-control">
   </div>
-
   <div class="form-group">
     <label>Consent to publish</label>
     <textarea required ng-model="newJournal.consToPublish" ng-trim="false"
               class="form-control" style="resize: none" rows="15"></textarea>
   </div>
-
-  <button type="submit" class="btn btn-primary pull-right">
+  <div>
+    <input type="file" nv-file-select="" uploader="uploader" ng-model="base64File" base-sixty-four-input/>
+    <ul>
+      <li ng-repeat="item in uploader.queue">
+        Name: <span ng-bind="item.file.name"></span><br/>
+        <button type="button" ng-click="item.upload()" ng-disabled="fileUploaded">upload</button>
+          <div ng-if="fileUploaded === false" class="progress" style="margin-bottom: 0;">
+            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <button ng-if="fileUploaded" type="submit" class="btn btn-primary pull-right">
     Confirm
   </button>
 </form>
+
+
+

@@ -14,6 +14,7 @@ public class Journal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(length =32676)
     private String base64Logo;
     private String name;
     private String consentToPublish;

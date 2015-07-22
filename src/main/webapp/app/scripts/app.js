@@ -9,7 +9,9 @@ angular
     'ngSanitize',
     'restangular',
     'ngTouch',
-    'picardy.fontawesome'
+    'picardy.fontawesome',
+    'angularFileUpload',
+    'naif.base64'
   ])
   .config(function ($routeProvider, RestangularProvider) {
     $routeProvider
