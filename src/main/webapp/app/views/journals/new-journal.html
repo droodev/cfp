@@ -1,4 +1,4 @@
-<form name="newjournal" class="form-horizontal" ng-submit="addJournal()">
+<form name="newjournalForm" class="form-horizontal" ng-submit="addJournal()">
   <div class="form-group">
     <label>Journal name</label>
     <input required ng-model="newJournal.name" class="form-control">
@@ -8,7 +8,9 @@
     <textarea required ng-model="newJournal.consToPublish" ng-trim="false"
               class="form-control" style="resize: none" rows="15"></textarea>
   </div>
-  <div>
+
+  <div class="form-group">
+    <label>Logo</label>
     <input type="file" nv-file-select="" uploader="uploader" ng-model="base64File" base-sixty-four-input/>
     <ul>
       <li ng-repeat="item in uploader.queue">
@@ -20,8 +22,9 @@
       </li>
     </ul>
   </div>
-  <button ng-if="fileUploaded" type="submit" class="btn btn-primary pull-right">
-    Confirm
+  <button ng-disabled="!newjournalForm.$valid" type="submit" class="btn btn-primary pull-right" data-toggle="tooltip"
+          data-placement="bottom" title="Save">
+    <fa name="save"></fa>
   </button>
 </form>
 

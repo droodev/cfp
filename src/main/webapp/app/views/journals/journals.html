@@ -1,41 +1,34 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Papers</div>
-  <div class="panel-body">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-11">
-          <ul class="list-group">
-           <div class="list-group-item" ng-repeat="journal in journals">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-8">
-                    <p>
-                      <span>Name: </span><span>{{journal.name}}</span>
-                    </p>
-                    <p>
-                      <span>Consent to publish: </span><span>{{journal.consentToPublish}}</span>
-                    </p>
-                    <p>
-                      <span>Logo: </span><img data-ng-src="data:image/png;base64,{{journal.base64Logo}}"/>
-                    </p>
-                  </div>
-                  <div class="col-md-4">
-                    <a href= "#/journal_details/{{journal.id}}">
-                      <button type="button" class="btn btn-default"><fa name="eye"/></button>
-                    </a>
-                    <button type="button" class="btn btn-default" ng-click="remove({{journal.id}})"><fa name="trash"/></button>
-                  </div>
-                </div>
-              </div>
-           </div>
-          </ul>
-        </div>
-        <div class="col-md-1">
-          <a type="button" class="btn btn-default" href="#/new_journal">
-            <fa name="plus"></fa>
+<div class="row">
+  <h2>Journals
+    <a type="button" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="bottom" title="New"
+       href="#/new_journal">
+      <fa name="plus"></fa>
+    </a>
+  </h2>
+</div>
+
+<div class="row">
+  <div ng-show="journals.length == 0">
+    Journal list is empty.<a type="button" class="btn btn-link" href="#/new_journal">Click here</a>to add new journal.
+  </div>
+  <ul class="list-group">
+   <div class="list-group-item" ng-repeat="journal in journals">
+      <div class="container-fluid">
+        <div class="row">
+          <img data-ng-src="data:image/png;base64,{{journal.base64Logo}}"/>
+          <span>{{journal.name}}</span>
+          <button type="button" class="btn btn-default pull-right" ng-click="remove(journal.id)" data-toggle="tooltip"
+                  data-placement="bottom" title="Delete">
+            <fa name="trash"/>
+          </button>
+          <a href= "#/journal_details/{{journal.id}}">
+            <button type="button" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="bottom"
+                    title="Details" style="margin-right: 2px">
+              <fa name="eye"/>
+            </button>
           </a>
         </div>
       </div>
-    </div>
-  </div>
+   </div>
+  </ul>
 </div>
