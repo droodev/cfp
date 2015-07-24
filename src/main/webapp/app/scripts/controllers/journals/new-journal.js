@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('autorApp')
-  .controller('NewJournalController', function ($scope, $location, FileUploader, Restangular) {
+  .controller('NewJournalController', function ($scope, $route, $location, FileUploader, Restangular) {
     $scope.newJournal = {};
     $scope.uploader = new FileUploader();
     $scope.fileUploaded=false;

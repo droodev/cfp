@@ -7,6 +7,7 @@ import pl.edu.agh.model.Paper;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
+import java.io.Console;
 
 @Path("/papers")
 @Stateless

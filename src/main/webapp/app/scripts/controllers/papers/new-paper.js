@@ -6,7 +6,7 @@ angular.module('autorApp')
     $scope.newPaper = {authors: [{}]};
     $scope.journalID = $routeParams.journals;
 
-    Restangular.one('journals', $routeParams.id).get().then(
+    Restangular.one('journals', $scope.journalID).get().then(
         function(ret){
           $scope.journal = ret;
         }, function error(reason){
@@ -22,7 +22,7 @@ angular.module('autorApp')
     }
 
     $scope.addPaper = function() {
-      Restangular.all('papers').customPOST($scope.newPaper,"",$scope.journalID,{}).then(function(res){
+      Restangular.all('papers').customPOST($scope.newPaper,"",{journalID: $scope.journalID},{}).then(function(res){
         $location.path('/confirmation');
       }, function(res){
         alert(res.status)
