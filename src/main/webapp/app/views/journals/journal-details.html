@@ -1,45 +1,56 @@
-<div class="panel panel-default">
-  <div class="panel-heading">{{journal.name}}</div>
-  <div class="panel-body">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-11">
-          <ul class="list-group">
-            <div class="list-group-item" ng-repeat="paper in papers">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-8">
-                    {{paper.name}}
-                  </div>
-                  <div class="col-md-4">
-                    <button type="button" class="btn btn-default"><fa name="eye"/></button>
-                    <button type="button" class="btn btn-default"><fa name="file-pdf-o"/></button>
-                    <button type="button" class="btn btn-default" ng-click="deletePaper({{paper.id}})"><fa name="trash"/></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ul>
-        </div>
-        <div class="col-md-1">
-          <a type="button" class="btn btn-default" href="#/journals">
-            <fa name="backward"></fa>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <label class="control-label col-md-3">Adding link:</label>
-        <div class="col-md-8">
-          {{getAddingLink()}}
-        </div>
-        <div class="col-md-1">
-          <a type="button" class="btn btn-default" href="{{getAddingLink()}}">
-            <fa name="external-link"></fa>
-          </a>
+<div class="row page-header">
+  <h2>
+    <img data-ng-src="data:image/png;base64,{{journal.base64Logo}}"/> {{journal.name}}
+    <a type="button" class="btn btn-default pull-right" href="#/journals" data-toggle="tooltip"
+       title="Back to journal list" style="margin-left: 2px">
+      <fa name="angle-double-left"></fa>
+    </a>
+    <button type="button" class="btn btn-default pull-right" ng-click="" data-toggle="modal" data-target="#myModal"
+            style="margin-left: 2px">
+      <fa name="link"/>
+    </button>
+    <a type="button" class="btn btn-default pull-right" href="{{addingLink}}" data-toggle="tooltip"
+       title="Add paper" style="margin-left: 2px">
+      <fa name="file-o"></fa>
+    </a>
+  </h2>
+</div>
+
+<div class="row">
+  <div ng-show="papers.length == 0">
+    Paper list is empty.
+  </div>
+  <ul class="list-group">
+    <div class="list-group-item" ng-repeat="paper in papers">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            {{paper.name}}
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-default"><fa name="eye"/></button>
+            <button type="button" class="btn btn-default"><fa name="file-pdf-o"/></button>
+            <button type="button" class="btn btn-default" ng-click="deletePaper(paper.id)"><fa name="trash"/></button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ul>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Link to add new paper</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{addingLink}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

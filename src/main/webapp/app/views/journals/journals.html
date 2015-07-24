@@ -1,7 +1,6 @@
-<div class="row">
+<div class="page-header row">
   <h2>Journals
-    <a type="button" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="bottom" title="New"
-       href="#/new_journal">
+    <a type="button" class="btn btn-default pull-right" data-toggle="tooltip" title="New" href="#/new_journal">
       <fa name="plus"></fa>
     </a>
   </h2>
@@ -18,12 +17,12 @@
           <img data-ng-src="data:image/png;base64,{{journal.base64Logo}}"/>
           <span>{{journal.name}}</span>
           <button type="button" class="btn btn-default pull-right" ng-click="remove(journal.id)" data-toggle="tooltip"
-                  data-placement="bottom" title="Delete">
+                  title="Delete" style="margin-left: 2px">
             <fa name="trash"/>
           </button>
           <a href= "#/journal_details/{{journal.id}}">
-            <button type="button" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="bottom"
-                    title="Details" style="margin-right: 2px">
+            <button type="button" class="btn btn-default pull-right" data-toggle="tooltip" title="Details"
+                    style="margin-left: 2px">
               <fa name="eye"/>
             </button>
           </a>

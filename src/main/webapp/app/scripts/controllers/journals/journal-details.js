@@ -2,9 +2,11 @@
 
 angular.module('autorApp')
   .controller('JournalDetailsController', function ($scope, $location, $routeParams, Restangular) {
+
     Restangular.one('journals', $routeParams.id).get().then(
       function(ret){
         $scope.journal = ret;
+        $scope.addingLink = getAddingLink();
       }, function error(reason){
         alert(reason.status)
       });
@@ -28,7 +30,8 @@ angular.module('autorApp')
       });
     }
 
-    $scope.getAddingLink = function(){
-      return $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/journals/" + $scope.journal.id + "/new_paper"
+    var getAddingLink = function(){
+      return $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/journals/" +
+          $scope.journal.id + "/new_paper"
     }
 });

@@ -4,14 +4,21 @@ angular.module('autorApp')
   .controller('NewPaperController', function ($scope, $location, $routeParams, Restangular) {
 
     $scope.newPaper = {authors: [{}]};
-    $scope.journalID = $routeParams.journals
+    $scope.journalID = $routeParams.journals;
+
+    Restangular.one('journals', $routeParams.id).get().then(
+        function(ret){
+          $scope.journal = ret;
+        }, function error(reason){
+          alert(reason.status)
+        });
 
     $scope.addAuthor = function() {
-      $scope.authors.push({});
+      $scope.newPaper.authors.push({});
     }
 
     $scope.deleteAuthor = function(index) {
-      $scope.authors.splice(index, 1);
+      $scope.newPaper.authors.splice(index, 1);
     }
 
     $scope.addPaper = function() {

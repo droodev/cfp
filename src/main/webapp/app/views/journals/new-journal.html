@@ -1,3 +1,6 @@
+<div class="row page-header">
+  <h2>New journal</h2>
+</div>
 <form name="newjournalForm" class="form-horizontal" ng-submit="addJournal()">
   <div class="form-group">
     <label>Journal name</label>
@@ -23,8 +26,8 @@
     </ul>
   </div>
   <button ng-disabled="!newjournalForm.$valid" type="submit" class="btn btn-primary pull-right" data-toggle="tooltip"
-          data-placement="bottom" title="Save">
-    <fa name="save"></fa>
+          title="Confirm">
+    <fa name="check"></fa>
   </button>
 </form>
 
