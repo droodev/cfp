@@ -1,5 +1,6 @@
 package pl.edu.agh.managers;
 
+import pl.edu.agh.model.Author;
 import pl.edu.agh.model.Journal;
 import pl.edu.agh.model.Paper;
 
@@ -10,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 @Singleton
@@ -20,6 +22,9 @@ public class JournalsManager {
 
     @EJB
     PapersManager papersManager;
+
+    @EJB
+    CorrespondencyDataManager correspondencyDataManager;
 
     public long addJournal(Journal journal) {
         em.persist(journal);
@@ -63,6 +68,11 @@ public class JournalsManager {
         Journal journal = getJournal(journalId);
         if (journal != null) {
             journal.addPaper(paper);
+        }
+        Iterator<Author> authors = paper.getAuthors().iterator();
+        if (authors.hasNext()){
+            Author correspondingAuthor = authors.next();
+            correspondencyDataManager.addCorrespondencyData(correspondingAuthor.getCorrespondencyData());
         }
         long newPaperId = papersManager.addPaper(paper);
         paper.setJournal(journal);

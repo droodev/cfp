@@ -1,9 +1,6 @@
 package pl.edu.agh.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Author {
@@ -16,6 +13,9 @@ public class Author {
     private String affiliation;
     private String contribution;
     private int contributionValue;
+
+    @OneToOne
+    private CorrespondencyData correspondencyData;
 
     protected Author() {
     }
@@ -50,6 +50,10 @@ public class Author {
 
     public long getId() {
         return id;
+    }
+
+    public CorrespondencyData getCorrespondencyData() {
+        return correspondencyData;
     }
 
 }
