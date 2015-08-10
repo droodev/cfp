@@ -66,11 +66,6 @@ public class JournalsManager {
         if (journal != null) {
             journal.addPaper(paper);
         }
-        /*Iterator<Author> authors = paper.getAuthors().iterator();
-        if (authors.hasNext()){
-            Author correspondingAuthor = authors.next();
-            correspondencyDataManager.addCorrespondencyData(correspondingAuthor.getCorrespondencyData());
-        }*/
         long newPaperId = papersManager.addPaper(paper);
         paper.setJournal(journal);
         em.persist(journal);

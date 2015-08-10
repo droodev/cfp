@@ -46,14 +46,13 @@ public class PapersManager {
         return new ArrayList<Author>();
     }
 
-    public long addAuthor(long paperID, Author author) {
+    public void addAuthor(long paperID, Author author) {
         Paper paper = getPaperById(paperID);
         if (paper != null) {
             paper.addAuthor(author);
         }
-        long newAuthorID = authorManger.addAuthor(author);
+        authorManger.addAuthor(author);
         em.persist(paper);
-        return newAuthorID;
     }
 
     public Paper getPaper(long id){ return getPaperById(id);}

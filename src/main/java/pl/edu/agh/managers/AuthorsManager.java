@@ -17,13 +17,12 @@ public class AuthorsManager {
     @EJB
     CorrespondencyDataManager correspondencyDataManager;
 
-    public long addAuthor(Author author) {
+    public void addAuthor(Author author) {
         if(author.getCorrespondencyData()!=null){
             System.out.print("Correspondency data exists!");
             correspondencyDataManager.addCorrespondencyData(author.getCorrespondencyData());
         }
         em.persist(author);
-        return author.getId();
     }
 
     public void removeAuthor(long authorID) {
