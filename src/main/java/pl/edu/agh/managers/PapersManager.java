@@ -56,6 +56,8 @@ public class PapersManager {
         return newAuthorID;
     }
 
+    public Paper getPaper(long id){ return getPaperById(id);}
+
     private Paper getPaperById(long id) {
         Query q = em.createQuery("SELECT paper FROM Paper paper WHERE paper.id = :id");
         q.setParameter("id", id);

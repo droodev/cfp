@@ -16,12 +16,23 @@ public class Paper {
     @OneToMany(fetch = FetchType.EAGER)
     private Collection<Author> authors = new ArrayList<Author>();
 
+    @ManyToOne
+    private Journal journal;
+
     protected Paper() {
     }
 
     public Paper(String name, String financialDisclosure) {
         this.name = name;
         this.financialDisclosure = financialDisclosure;
+    }
+
+    public Journal getJournal() {
+        return journal;
+    }
+
+    public void setJournal(Journal journal) {
+        this.journal = journal;
     }
 
     public long getId() {

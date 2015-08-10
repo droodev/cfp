@@ -1,13 +1,19 @@
 package pl.edu.agh.services.rest;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import pl.edu.agh.managers.JournalsManager;
 import pl.edu.agh.managers.PapersManager;
+import pl.edu.agh.model.Journal;
 import pl.edu.agh.model.Paper;
+import pl.edu.agh.utils.PaperPDFPrinter;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
-import java.io.Console;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 @Path("/papers")
 @Stateless
@@ -33,6 +39,18 @@ public class PapersRESTService {
     public String deletePaper(@PathParam("id") long paperID) {
         papersManager.removePaper(paperID);
         return "OK";
+    }
+
+    @GET
+    @Path("/pdf/{id}")
+    @Produces("application/pdf")
+    public File getPaperPDF(@PathParam("id") long paperID) {
+        //return journalsManager.addPaper(journalID, paper);
+        Paper paper = papersManager.getPaper(paperID);
+        Journal journal = paper.getJournal();
+        System.out.println(paper.getName());
+        System.out.println(paper.getJournal());
+        return new PaperPDFPrinter().getDocument(journal, paper);
     }
 
     /*

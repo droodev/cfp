@@ -17,9 +17,10 @@ public class Journal {
     @Column(length =32676)
     private String base64Logo;
     private String name;
+    @Column(length =32676)
     private String consentToPublish;
 
-    @OneToMany
+    @OneToMany(mappedBy = "journal")
     private Collection<Paper> papers = new ArrayList<Paper>();
 
     public Journal(String name, String consentToPublish, String base64Logo) {

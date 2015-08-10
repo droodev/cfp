@@ -65,6 +65,7 @@ public class JournalsManager {
             journal.addPaper(paper);
         }
         long newPaperId = papersManager.addPaper(paper);
+        paper.setJournal(journal);
         em.persist(journal);
         return newPaperId;
     }
