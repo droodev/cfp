@@ -25,7 +25,7 @@ public final class GSONMessageHandler implements MessageBodyWriter<Object>, Mess
     private Gson getGson() {
         if (gson == null) {
             final GsonBuilder gsonBuilder = new GsonBuilder();
-            gson = gsonBuilder.create();
+            gson = gsonBuilder.setExclusionStrategies(new CircularDependencyExclusion()).create();
         }
         return gson;
     }

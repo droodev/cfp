@@ -37,6 +37,7 @@ public class PaperPDFPrinter {
         Paragraph paperTitle= new Paragraph("Paper title: " + paper.getName(), TEXT_FONT);
         Paragraph authors= new Paragraph("Authors: AuthorA, AuthorB, AuthrC", TEXT_FONT);
         Paragraph sign= new Paragraph("Date, signature of corresponding Author: DREW, 2.05.2015", TEXT_FONT);
+        Paragraph corresponing = new Paragraph(paper.getAuthors().iterator().next().getCorrespondencyData().getCity());
         try {
             document.add(journalName);
             document.add(Chunk.NEWLINE);
@@ -47,6 +48,7 @@ public class PaperPDFPrinter {
             document.add(paperTitle);
             document.add(authors);
             document.add(sign);
+            document.add(corresponing);
         } catch (DocumentException e) {
             e.printStackTrace();
         }

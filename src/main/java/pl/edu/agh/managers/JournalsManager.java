@@ -17,14 +17,11 @@ import java.util.List;
 @Singleton
 public class JournalsManager {
 
-    @PersistenceContext(unitName = "testName")
+    @PersistenceContext(unitName = "domain")
     EntityManager em;
 
     @EJB
     PapersManager papersManager;
-
-    @EJB
-    CorrespondencyDataManager correspondencyDataManager;
 
     public long addJournal(Journal journal) {
         em.persist(journal);
@@ -69,11 +66,11 @@ public class JournalsManager {
         if (journal != null) {
             journal.addPaper(paper);
         }
-        Iterator<Author> authors = paper.getAuthors().iterator();
+        /*Iterator<Author> authors = paper.getAuthors().iterator();
         if (authors.hasNext()){
             Author correspondingAuthor = authors.next();
             correspondencyDataManager.addCorrespondencyData(correspondingAuthor.getCorrespondencyData());
-        }
+        }*/
         long newPaperId = papersManager.addPaper(paper);
         paper.setJournal(journal);
         em.persist(journal);
@@ -83,8 +80,11 @@ public class JournalsManager {
     public Collection<Paper> getAllPapers(long journalId) {
         Journal journal = getJournal(journalId);
         if (journal != null) {
-            return journal.getPapers();
+            Collection<Paper> journals = journal.getPapers();
+            System.out.println(journals.size());
+            return journals;
         }
+
         return new ArrayList<Paper>();
     }
 

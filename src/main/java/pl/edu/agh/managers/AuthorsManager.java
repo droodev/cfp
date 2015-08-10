@@ -2,6 +2,7 @@ package pl.edu.agh.managers;
 
 import pl.edu.agh.model.Author;
 
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,10 +11,17 @@ import javax.persistence.Query;
 @Singleton
 public class AuthorsManager {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "domain")
     private EntityManager em;
 
+    @EJB
+    CorrespondencyDataManager correspondencyDataManager;
+
     public long addAuthor(Author author) {
+        if(author.getCorrespondencyData()!=null){
+            System.out.print("Correspondency data exists!");
+            correspondencyDataManager.addCorrespondencyData(author.getCorrespondencyData());
+        }
         em.persist(author);
         return author.getId();
     }

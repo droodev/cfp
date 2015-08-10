@@ -8,11 +8,10 @@ import javax.persistence.PersistenceContext;
 
 @Singleton
 public class CorrespondencyDataManager {
-    @PersistenceContext
+    @PersistenceContext(unitName = "domain")
     private EntityManager em;
 
-    public long addCorrespondencyData(CorrespondencyData data){
+    public void addCorrespondencyData(CorrespondencyData data){
         em.persist(data);
-        return data.getId();
     }
 }

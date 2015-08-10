@@ -1,5 +1,7 @@
 package pl.edu.agh.model;
 
+import pl.edu.agh.utils.GSONExclude;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,6 +19,7 @@ public class Paper {
     private Collection<Author> authors = new ArrayList<Author>();
 
     @ManyToOne
+    @GSONExclude
     private Journal journal;
 
     protected Paper() {

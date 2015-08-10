@@ -14,7 +14,7 @@ public class Author {
     private String contribution;
     private int contributionValue;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private CorrespondencyData correspondencyData;
 
     protected Author() {

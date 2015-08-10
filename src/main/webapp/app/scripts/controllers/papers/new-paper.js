@@ -22,6 +22,13 @@ angular.module('autorApp')
     }
 
     $scope.addPaper = function() {
+      var auths = $scope.newPaper.authors
+      for (var ind in auths) {
+        if(auths[ind].corresponding === "true"){
+          auths[ind].correspondencyData = $scope.contactData;
+        }
+        delete auths[ind].corresponding
+      }
       Restangular.all('papers').customPOST($scope.newPaper,"",{journalID: $scope.journalID},{}).then(function(res){
         $location.path('/confirmation');
       }, function(res){

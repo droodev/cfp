@@ -45,11 +45,8 @@ public class PapersRESTService {
     @Path("/pdf/{id}")
     @Produces("application/pdf")
     public File getPaperPDF(@PathParam("id") long paperID) {
-        //return journalsManager.addPaper(journalID, paper);
         Paper paper = papersManager.getPaper(paperID);
         Journal journal = paper.getJournal();
-        System.out.println(paper.getName());
-        System.out.println(paper.getJournal());
         return new PaperPDFPrinter().getDocument(journal, paper);
     }
 

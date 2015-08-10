@@ -14,7 +14,7 @@ import java.util.Collection;
 @Singleton
 public class PapersManager {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "domain")
     private EntityManager em;
 
     @EJB
