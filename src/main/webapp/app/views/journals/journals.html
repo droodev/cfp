@@ -16,7 +16,7 @@
         <div class="row">
           <img data-ng-src="data:image/png;base64,{{journal.base64Logo}}"/>
           <span>{{journal.name}}</span>
-          <button type="button" class="btn btn-default pull-right" ng-click="remove(journal.id)" data-toggle="tooltip"
+          <button type="button" class="btn btn-default pull-right" ng-click="openDeleteConfirmModal(journal)" data-toggle="tooltip"
                   title="Delete" style="margin-left: 2px">
             <fa name="trash"/>
           </button>
@@ -31,3 +31,26 @@
    </div>
   </ul>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteJournalConfirmModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete {{journal.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to remove this journal?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <fa name="times"></fa> Cancel
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="remove(journal.id)">
+          <fa name="check"></fa> OK
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

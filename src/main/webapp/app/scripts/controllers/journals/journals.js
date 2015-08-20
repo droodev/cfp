@@ -9,6 +9,11 @@ angular.module('autorApp')
       alert(reason.status)
     });
 
+    $scope.openDeleteConfirmModal = function(journal) {
+      $scope.journal = journal;
+      $("#deleteJournalConfirmModal").modal('show');
+    }
+
     $scope.remove = function(par) {
       Restangular.one('journals', par).remove().then(function(res){
         for(var i = $scope.journals.length - 1; i >= 0; i--) {
@@ -19,5 +24,6 @@ angular.module('autorApp')
       }, function(res){
         alert(res.status)
       });
+      $("#deleteJournalConfirmModal").modal('hide');
     }
   });

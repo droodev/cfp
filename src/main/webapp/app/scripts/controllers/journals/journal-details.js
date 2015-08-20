@@ -18,6 +18,11 @@ angular.module('autorApp')
         alert(reason.status)
       });
 
+    $scope.openDeleteConfirmModal = function(paper) {
+      $scope.paper = paper;
+      $("#deletePaperConfirmModal").modal('show');
+    }
+
     $scope.deletePaper = function(id){
       Restangular.one('papers', id).remove().then(function(res){
         for(var i = $scope.papers.length - 1; i >= 0; i--) {
@@ -28,6 +33,7 @@ angular.module('autorApp')
       }, function(res){
         alert(res.status)
       });
+      $("#deletePaperConfirmModal").modal('hide');
     }
 
     var getAddingLink = function(){
