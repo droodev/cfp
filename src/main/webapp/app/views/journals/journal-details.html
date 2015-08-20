@@ -5,8 +5,8 @@
        title="Back to journal list" style="margin-left: 2px">
       <fa name="angle-double-left"></fa>
     </a>
-    <button type="button" class="btn btn-default pull-right" ng-click="" data-toggle="modal" data-target="#myModal"
-            style="margin-left: 2px">
+    <button type="button" class="btn btn-default pull-right" ng-click="openLinkModal()" data-toggle="tooltip"
+            title="Get link to add new paper" style="margin-left: 2px">
       <fa name="link"/>
     </button>
     <a type="button" class="btn btn-default pull-right" href="{{addingLink}}" data-toggle="tooltip"
@@ -38,7 +38,7 @@
 </div>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="linkModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <div class="modal-content">

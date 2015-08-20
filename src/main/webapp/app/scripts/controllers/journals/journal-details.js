@@ -18,6 +18,10 @@ angular.module('autorApp')
         alert(reason.status)
       });
 
+    $scope.openLinkModal = function() {
+      $("#linkModal").modal('show');
+    }
+
     $scope.openDeleteConfirmModal = function(paper) {
       $scope.paper = paper;
       $("#deletePaperConfirmModal").modal('show');
