@@ -14,6 +14,7 @@ public class Paper {
     private long id;
     private String name;
     private String financialDisclosure;
+    private String signature;
 
     @OneToMany(fetch = FetchType.EAGER)
     private Collection<Author> authors = new ArrayList<Author>();
@@ -25,9 +26,10 @@ public class Paper {
     protected Paper() {
     }
 
-    public Paper(String name, String financialDisclosure) {
+    public Paper(String name, String financialDisclosure, String signature) {
         this.name = name;
         this.financialDisclosure = financialDisclosure;
+        this.signature = signature;
     }
 
     public Journal getJournal() {
@@ -48,6 +50,10 @@ public class Paper {
 
     public String getFinancialDisclosure() {
         return financialDisclosure;
+    }
+
+    public String getSignature() {
+        return signature;
     }
 
     public Collection<Author> getAuthors() {

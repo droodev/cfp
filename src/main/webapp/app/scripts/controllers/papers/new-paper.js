@@ -5,6 +5,7 @@ angular.module('autorApp')
 
     $scope.newPaper = {authors: [{}]};
     $scope.journalID = $routeParams.journals;
+    $scope.newPaper.authors[0].corresponding = true;
 
     Restangular.one('journals', $scope.journalID).get().then(
         function(ret){
@@ -22,19 +23,20 @@ angular.module('autorApp')
     }
 
     $scope.addPaper = function() {
-      var auths = $scope.newPaper.authors
-      for (var ind in auths) {
-        if(auths[ind].corresponding === "true"){
-          auths[ind].correspondencyData = $scope.contactData;
+      if ($scope.newpaperForm.$valid) {
+        var auths = $scope.newPaper.authors
+        for (var ind in auths) {
+          if (auths[ind].corresponding === "true") {
+            auths[ind].correspondencyData = $scope.contactData;
+          }
+          delete auths[ind].corresponding
         }
-        delete auths[ind].corresponding
+        Restangular.all('papers').customPOST($scope.newPaper, "", {journalID: $scope.journalID}, {}).then(function (res) {
+          $location.path('/confirmation');
+        }, function (res) {
+          alert(res.status)
+        });
       }
-      Restangular.all('papers').customPOST($scope.newPaper,"",{journalID: $scope.journalID},{}).then(function(res){
-        $location.path('/confirmation');
-      }, function(res){
-        alert(res.status)
-      });
-
     }
 
   });

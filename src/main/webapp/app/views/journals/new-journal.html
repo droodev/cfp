@@ -1,16 +1,37 @@
 <div class="row page-header">
   <h2>New journal</h2>
 </div>
-<form name="newjournalForm" class="form-horizontal" ng-submit="addJournal()">
+
+<div ng-show="newjournalForm.$submitted">
+  <div class="alert alert-danger"
+       ng-show="!newjournalForm.$valid">
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    Some fields are not filled properly.
+  </div>
+</div>
+
+<form novalidate name="newjournalForm" class="form-horizontal" ng-submit="addJournal()">
   <div class="form-group">
     <label>Journal name</label>
-    <input required ng-model="newJournal.name" class="form-control">
+    <label ng-show="newjournalForm.$submitted || newjournalForm.journalName.$touched">
+      <fa name="exclamation-circle" ng-show="newjournalForm.journalName.$error.required" style="color: #a94442"
+          data-toggle="tooltip" title="Required field">
+      </fa>
+    </label>
+    <input required ng-model="newJournal.name" name="journalName" class="form-control">
   </div>
+
   <div class="form-group">
     <label>Consent to publish</label>
-    <textarea required ng-model="newJournal.consToPublish" ng-trim="false"
+    <label ng-show="newjournalForm.$submitted || newjournalForm.consToPublish.$touched">
+      <fa name="exclamation-circle" ng-show="newjournalForm.consToPublish.$error.required" style="color: #a94442"
+          data-toggle="tooltip" title="Required field">
+      </fa>
+    </label>
+    <textarea required ng-model="newJournal.consToPublish" name="consToPublish" ng-trim="false"
               class="form-control" style="resize: none" rows="15"></textarea>
   </div>
+
 
   <div class="form-group">
     <label>Logo</label>
@@ -25,7 +46,8 @@
       </li>
     </ul>
   </div>
-  <button ng-disabled="!newjournalForm.$valid" type="submit" class="btn btn-primary pull-right" data-toggle="tooltip"
+
+  <button type="submit" class="btn btn-primary pull-right" data-toggle="tooltip"
           title="Confirm">
     <fa name="check"></fa>
   </button>

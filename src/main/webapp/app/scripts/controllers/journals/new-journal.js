@@ -12,13 +12,14 @@ angular.module('autorApp')
     };
 
     $scope.addJournal = function() {
-      Restangular.all('journals').customPOST("\""+$scope.base64Logo+"\"","",$scope.newJournal,{}).then(function(res){
-        $location.path('/journals');
-        $route.reload();
-      }, function(res){
-        alert(res.status)
-      });
-
+      if ($scope.newjournalForm.$valid) {
+        Restangular.all('journals').customPOST("\"" + $scope.base64Logo + "\"", "", $scope.newJournal, {}).then(function (res) {
+          $location.path('/journals');
+          $route.reload();
+        }, function (res) {
+          alert(res.status)
+        });
+      }
     }
 
   });
