@@ -1,19 +1,24 @@
 <div class="row page-header">
-  <h2>
-    <img data-ng-src="data:image/png;base64,{{journal.base64Logo}}"/> {{journal.name}}
-    <a type="button" class="btn btn-default pull-right" href="#/journals" data-toggle="tooltip"
-       title="Back to journal list" style="margin-left: 2px">
-      <fa name="angle-double-left"></fa>
-    </a>
-    <button type="button" class="btn btn-default pull-right" ng-click="openLinkModal()" data-toggle="tooltip"
-            title="Get link to add new paper" style="margin-left: 2px">
-      <fa name="link"/>
-    </button>
-    <a type="button" class="btn btn-default pull-right" href="{{addingLink}}" data-toggle="tooltip"
-       title="Add paper" style="margin-left: 2px">
-      <fa name="file-o"></fa>
-    </a>
-  </h2>
+    <div>
+      <div ng-if='journal.base64Logo !== "undefined"'>
+        <img data-ng-src="data:image/png;base64,{{journal.base64Logo}}" style="max-height:128px;max-width:128px;" />
+      </div>
+      <div style="text-align:center;">
+        <h2>{{journal.name}}</h2>
+        <a type="button" class="btn btn-default pull-right" href="#/journals" data-toggle="tooltip"
+           title="Back to journal list" style="margin-left: 2px">
+          <fa name="angle-double-left"></fa>
+        </a>
+        <button type="button" class="btn btn-default pull-right" ng-click="openLinkModal()" data-toggle="tooltip"
+                title="Get link to add new paper" style="margin-left: 2px">
+          <fa name="link"/>
+        </button>
+        <a type="button" class="btn btn-default pull-right" href="{{addingLink}}" data-toggle="tooltip"
+           title="Add paper" style="margin-left: 2px">
+          <fa name="file-o"></fa>
+        </a>
+      </div>
+    </div>
 </div>
 
 <div class="row">
