@@ -84,12 +84,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <label>Street: </label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreet.$touched">
-          <fa name="exclamation-circle" ng-show="newpaperForm.contactStreet.$error.required" style="color: #a94442"
-              data-toggle="tooltip" title="Required field">
-          </fa>
-        </label>
-        <input ng-model="contactData.street" class="form-control" name="contactStreet" required/>
+        <input ng-model="contactData.streetName" class="form-control"/>
         <label>Street number: </label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreetNumber.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactStreetNumber.$error.required" style="color: #a94442"
@@ -105,22 +100,9 @@
         </label>
         <input ng-model="contactData.city" class="form-control" name="contactCity" required/>
         <label>PostalCode: </label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactPostalCode.$touched">
-          <fa name="exclamation-circle" ng-show="newpaperForm.contactPostalCode.$error.required" style="color: #a94442"
-              data-toggle="tooltip" title="Required field">
-          </fa>
-        </label>
-        <input ng-model="contactData.postalCode" class="form-control" name="contactPostalCode" required/>
-        <label>email: </label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactEmail.$touched">
-          <fa name="exclamation-circle" ng-show="newpaperForm.contactEmail.$error.required" style="color: #a94442"
-              data-toggle="tooltip" title="Required field">
-          </fa>
-          <fa name="exclamation-circle" ng-show="newpaperForm.contactEmail.$error.email" style="color: #a94442"
-              data-toggle="tooltip" title="Not valid email">
-          </fa>
-        </label>
-        <input type="email" ng-model="contactData.email" class="form-control" name="contactEmail" required/>
+        <input ng-model="contactData.postalCode" class="form-control"/>
+        <label>E-mail: </label>
+        <input ng-model="contactData.emailAddress" class="form-control"/>
       </div>
     </div>
   </div>

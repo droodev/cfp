@@ -27,7 +27,7 @@
           {{paper.name}}
           <button type="button" class="btn btn-default pull-right" ng-click="openDeleteConfirmModal(paper)"
                   data-toggle="tooltip" title="Delete" style="margin-left: 2px"><fa name="trash"/></button>
-          <button type="button" class="btn btn-default pull-right" data-toggle="tooltip" title="Export to pdf"
+          <button type="button" class="btn btn-default pull-right" ng-click="openPDF(paper.id)" data-toggle="tooltip" title="Export to pdf"
                   style="margin-left: 2px"><fa name="file-pdf-o"/></button>
           <button type="button" class="btn btn-default pull-right" data-toggle="tooltip" title="Details"
                   style="margin-left: 2px"><fa name="eye"/></button>
@@ -53,6 +53,7 @@
 
   </div>
 </div>
+<<<<<<< HEAD
 
 <!-- Modal -->
 <div class="modal fade" id="deletePaperConfirmModal" role="dialog">
@@ -76,3 +77,5 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+=======
+>>>>>>> Some minor fixes and refactoring
