@@ -44,14 +44,6 @@ angular.module('autorApp')
       window.open(Restangular.one('papers/pdf', id).getRequestedUrl())
     }
 
-    $scope.openPDF = function(id){
-      window.open(Restangular.one('papers/pdf', id).getRequestedUrl())
-    }
-
-    $scope.openPDF = function(id){
-      window.open(Restangular.one('papers/pdf', id).getRequestedUrl())
-    }
-
     var getAddingLink = function(){
       return $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/journals/" +
           $scope.journal.id + "/new_paper"
