@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 @Entity
 public class Paper {
@@ -14,6 +15,10 @@ public class Paper {
     private long id;
     private String name;
     private String financialDisclosure;
+    private String IPAddress;
+    private Date signingDate;
+    private String signature;
+
 
     @OneToMany(fetch = FetchType.EAGER)
     private Collection<Author> authors = new ArrayList<Author>();
@@ -56,5 +61,17 @@ public class Paper {
 
     public void addAuthor(Author author) {
         authors.add(author);
+    }
+
+    public String getIPAddress() {
+        return IPAddress;
+    }
+
+    public Date getSigningDate() {
+        return signingDate;
+    }
+
+    public String getSignature() {
+        return signature;
     }
 }

@@ -49,7 +49,7 @@ public class PaperPDFPrinter {
             document.add(createPaperTitleParagraph(paper.getName()));
             document.add(createAuthorsParagraph(paper.getAuthors()));
             document.add(createCorrespondigAuthorParagraph(paper.getAuthors()));
-            document.add(createSignParagraph());
+            document.add(createSignParagraph(paper));
 
             document.newPage();
 
@@ -125,9 +125,10 @@ public class PaperPDFPrinter {
         return paperTitleParagraph;
     }
 
-    private Paragraph createSignParagraph() {
+    private Paragraph createSignParagraph(Paper paper) {
         Paragraph signParagraph= new Paragraph("Date, signature of corresponding author: ", SMALL_SUBTITLE_FONT);
-        signParagraph.add(new Chunk("DREW, 2.05.2015", TEXT_FONT));
+        String signature= String.format("%s, %s, %s", paper.getSignature(), paper.getSigningDate().toString(), paper.getIPAddress());
+        signParagraph.add(new Chunk(signature, TEXT_FONT));
         return signParagraph;
     }
 
