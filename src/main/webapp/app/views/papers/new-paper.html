@@ -4,7 +4,6 @@
   </h4>
   <h2>New paper</h2>
 </div>
-
 <div ng-show="newpaperForm.$submitted">
   <div class="alert alert-danger"
        ng-show="!newpaperForm.$valid">
@@ -80,11 +79,17 @@
   </div>
 
   <div class="form-group">
+    <label>Contact Data</label>
     <label>Contact data of corresponding author</label>
     <div class="panel panel-default">
       <div class="panel-body">
         <label>Street: </label>
-        <input ng-model="contactData.streetName" class="form-control"/>
+        <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreet.$touched">
+          <fa name="exclamation-circle" ng-show="newpaperForm.contactStreet.$error.required" style="color: #a94442"
+              data-toggle="tooltip" title="Required field">
+          </fa>
+        </label>
+        <input ng-model="contactData.streetName" class="form-control" name="contactStreet" required/>
         <label>Street number: </label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreetNumber.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactStreetNumber.$error.required" style="color: #a94442"
@@ -100,12 +105,26 @@
         </label>
         <input ng-model="contactData.city" class="form-control" name="contactCity" required/>
         <label>PostalCode: </label>
-        <input ng-model="contactData.postalCode" class="form-control"/>
+        <label ng-show="newpaperForm.$submitted || newpaperForm.contactPostalCode.$touched">
+          <fa name="exclamation-circle" ng-show="newpaperForm.contactPostalCode.$error.required" style="color: #a94442"
+              data-toggle="tooltip" title="Required field">
+          </fa>
+        </label>
+        <input ng-model="contactData.postalCode" class="form-control" name="contactPostalCode" required/>
         <label>E-mail: </label>
-        <input ng-model="contactData.emailAddress" class="form-control"/>
+        <label ng-show="newpaperForm.$submitted || newpaperForm.contactEmail.$touched">
+          <fa name="exclamation-circle" ng-show="newpaperForm.contactEmail.$error.required" style="color: #a94442"
+              data-toggle="tooltip" title="Required field">
+          </fa>
+          <fa name="exclamation-circle" ng-show="newpaperForm.contactEmail.$error.email" style="color: #a94442"
+              data-toggle="tooltip" title="Not valid email">
+          </fa>
+        </label>
+        <input type="email" ng-model="contactData.emailAddress" class="form-control" name="contactEmail" required/>
       </div>
     </div>
   </div>
+
 
   <div class="form-group">
     <label>Financial disclosure</label>

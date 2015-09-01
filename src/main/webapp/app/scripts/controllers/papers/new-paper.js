@@ -26,7 +26,7 @@ angular.module('autorApp')
       if ($scope.newpaperForm.$valid) {
         var auths = $scope.newPaper.authors
         for (var ind in auths) {
-          if (auths[ind].corresponding === "true") {
+          if (auths[ind].corresponding === true) {
             auths[ind].correspondencyData = $scope.contactData;
             auths.unshift(auths.splice(ind, 1)[0]);
             break;
@@ -37,6 +37,7 @@ angular.module('autorApp')
         }
 
         $scope.newPaper.signingDate = new Date().getTime()
+
         $http.get("https://api.ipify.org?format=json").then(function (response) {
           $scope.newPaper.IPAddress = response.data.ip
           alert($scope.newPaper.IPAddress)
