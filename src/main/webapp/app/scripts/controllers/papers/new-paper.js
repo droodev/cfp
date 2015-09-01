@@ -40,7 +40,6 @@ angular.module('autorApp')
 
         $http.get("https://api.ipify.org?format=json").then(function (response) {
           $scope.newPaper.IPAddress = response.data.ip
-          alert($scope.newPaper.IPAddress)
           Restangular.all('papers').customPOST($scope.newPaper, "", {journalID: $scope.journalID}, {}).then(function (res) {
             $location.path('/confirmation');
           }, function (res) {
