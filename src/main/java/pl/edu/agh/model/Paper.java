@@ -74,8 +74,4 @@ public class Paper {
     public Date getSigningDate() {
         return signingDate;
     }
-
-    public String getSignature() {
-        return signature;
-    }
 }
