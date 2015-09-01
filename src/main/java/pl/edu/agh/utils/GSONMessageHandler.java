@@ -14,6 +14,7 @@ import javax.ws.rs.ext.Provider;
 import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.util.Date;
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
@@ -25,7 +26,7 @@ public final class GSONMessageHandler implements MessageBodyWriter<Object>, Mess
     private Gson getGson() {
         if (gson == null) {
             final GsonBuilder gsonBuilder = new GsonBuilder();
-            gson = gsonBuilder.setExclusionStrategies(new CircularDependencyExclusion()).create();
+            gson = gsonBuilder.setExclusionStrategies(new CircularDependencyExclusion()).registerTypeAdapter(Date.class, new GSONDateAdapter()).create();
         }
         return gson;
     }

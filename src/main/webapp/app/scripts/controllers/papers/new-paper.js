@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('autorApp')
-  .controller('NewPaperController', function ($scope, $location, $routeParams, Restangular) {
+  .controller('NewPaperController', function ($scope, $location, $routeParams, $http, Restangular) {
 
     $scope.newPaper = {authors: [{}]};
     $scope.journalID = $routeParams.id;
@@ -26,7 +26,7 @@ angular.module('autorApp')
       if ($scope.newpaperForm.$valid) {
         var auths = $scope.newPaper.authors
         for (var ind in auths) {
-          if(auths[ind].corresponding === "true"){
+          if (auths[ind].corresponding === "true") {
             auths[ind].correspondencyData = $scope.contactData;
             auths.unshift(auths.splice(ind, 1)[0]);
             break;
@@ -35,11 +35,16 @@ angular.module('autorApp')
         for (var ind in auths) {
           delete auths[ind].corresponding
         }
-        Restangular.all('papers').customPOST($scope.newPaper, "", {journalID: $scope.journalID}, {}).then(function (res) {
-          $location.path('/confirmation');
-        }, function (res) {
-          alert(res.status)
+
+        $scope.newPaper.signingDate = new Date().getTime()
+
+        $http.get("https://api.ipify.org?format=json").then(function (response) {
+          $scope.newPaper.IPAddress = response.data.ip
+          alert($scope.newPaper.IPAddress)
+          Restangular.all('papers').customPOST($scope.newPaper, "", {journalID: $scope.journalID}, {}).then(function (res) {
+            $location.path('/confirmation');
+          }, function (res) {
+            alert(res.status)
+          });
         });
-      }
-    }
-  });
+      }}
