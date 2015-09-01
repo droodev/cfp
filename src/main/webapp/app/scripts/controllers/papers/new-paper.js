@@ -37,7 +37,6 @@ angular.module('autorApp')
         }
 
         $scope.newPaper.signingDate = new Date().getTime()
-
         $http.get("https://api.ipify.org?format=json").then(function (response) {
           $scope.newPaper.IPAddress = response.data.ip
           alert($scope.newPaper.IPAddress)
@@ -47,5 +46,4 @@ angular.module('autorApp')
             alert(res.status)
           });
         });
-      }}
-  })
+      }}})
