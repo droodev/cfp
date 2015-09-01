@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.codec.Base64;
+import com.itextpdf.text.pdf.draw.VerticalPositionMark;
 import pl.edu.agh.model.Author;
 import pl.edu.agh.model.Journal;
 import pl.edu.agh.model.Paper;
@@ -13,12 +14,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collection;
 
 public class PaperPDFPrinter {
     private static final Font TITLE_FONT = FontFactory.getFont(FontFactory.TIMES, 30);
     private static final Font SUBTITLE_FONT = FontFactory.getFont(FontFactory.TIMES_BOLD, 15);
-    private static final Font TEXT_FONT = FontFactory.getFont(FontFactory.TIMES);
+    private static final Font TEXT_FONT = FontFactory.getFont(FontFactory.TIMES,11);
+    private static final Font SMALL_SUBTITLE_FONT = FontFactory.getFont(FontFactory.TIMES_BOLD,11);
     private static final Font TABLE_HEADER_FONT = FontFactory.getFont(FontFactory.TIMES,10);
+    private static final Chunk TAB = new Chunk(new VerticalPositionMark(), 50, true);
 
 
     public File getDocument(Journal journal, Paper paper){
@@ -33,64 +37,32 @@ public class PaperPDFPrinter {
         }
         document.open();
 
-        Paragraph journalName = new Paragraph(journal.getName(), TITLE_FONT);
-        journalName.setAlignment(Chunk.ALIGN_CENTER);
-        Paragraph consentTitle = new Paragraph("Consent to publish", SUBTITLE_FONT);
-        consentTitle.setAlignment(Chunk.ALIGN_CENTER);
-        Paragraph consent= new Paragraph(journal.getConsentToPublish(), TEXT_FONT);
-        Paragraph paperTitle= new Paragraph("Paper title: " + paper.getName(), TEXT_FONT);
-        Paragraph authorsTitle= new Paragraph("Authors:", TEXT_FONT);
-
-        StringBuilder builder = new StringBuilder();
-        for(Author a: paper.getAuthors()){
-            builder.append(String.format("%s %s,", a.getName(), a.getSurname()));
-        }
-        Paragraph authors= new Paragraph(builder.substring(0,builder.length()-1), TEXT_FONT);
-
-
-        Paragraph sign= new Paragraph("Date, signature of corresponding Author: DREW, 2.05.2015", TEXT_FONT);
-        Paragraph contributionTitle= new Paragraph("Contribution of the authors", TEXT_FONT);
-        Paragraph appendixTitle = new Paragraph("Consent to Publish Appendix", SUBTITLE_FONT);
-        appendixTitle.setAlignment(Chunk.ALIGN_CENTER);
-        Paragraph financialTitle = new Paragraph("Financial disclosure", TEXT_FONT);
-        Paragraph financialDislosure = new Paragraph(paper.getFinancialDisclosure(), TEXT_FONT);
-        Paragraph correspondingTitle = new Paragraph("Corresponding author:", TEXT_FONT);
-        Author cAuthor = paper.getAuthors().iterator().next();
-        Paragraph correspondingData = new Paragraph(String.format("Name: %s %s\nAffiliaion: %s\n Address: %s %s,%s %s\nemail: %s",
-                cAuthor.getName(), cAuthor.getSurname(), cAuthor.getAffiliation(), cAuthor.getCorrespondencyData().getStreetName(), cAuthor.getCorrespondencyData().getStreetNumber(),
-                cAuthor.getCorrespondencyData().getCity(), cAuthor.getCorrespondencyData().getPostalCode(), cAuthor.getCorrespondencyData().getEmailAddress()));
         try {
 
-            createPageTitle(journal, document, journalName);
+            constructPageTitle(journal, document);
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
-            document.add(consentTitle);
+            document.add(createConsentTitle());
             document.add(Chunk.NEWLINE);
-            document.add(consent);
+            document.add(createConsentParagraph(journal.getConsentToPublish()));
             document.add(Chunk.NEWLINE);
-            document.add(paperTitle);
-            document.add(Chunk.NEWLINE);
-            document.add(authorsTitle);
-            document.add(authors);
-            document.add(Chunk.NEWLINE);
-            document.add(correspondingTitle);
-            document.add(correspondingData);
-            document.add(Chunk.NEWLINE);
-            document.add(sign);
+            document.add(createPaperTitleParagraph(paper.getName()));
+            document.add(createAuthorsParagraph(paper.getAuthors()));
+            document.add(createCorrespondigAuthorParagraph(paper.getAuthors()));
+            document.add(createSignParagraph());
 
             document.newPage();
 
-            createPageTitle(journal, document, journalName);
+            constructPageTitle(journal, document);
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
-            document.add(appendixTitle);
+            document.add(createAppendixTitleParagraph());
             document.add(Chunk.NEWLINE);
-            document.add(paperTitle);
-            document.add(contributionTitle);
+            document.add(createPaperTitleParagraph(paper.getName()));
             document.add(Chunk.NEWLINE);
-            document.add(getAuthorsTable(paper));
-            document.add(financialTitle);
-            document.add(financialDislosure);
+            document.add(createContributionParagraph(paper));
+            document.add(Chunk.NEWLINE);
+            document.add(createFinancialDisclosureParagraph(paper.getFinancialDisclosure()));
 
 
         } catch (DocumentException e) {
@@ -100,7 +72,78 @@ public class PaperPDFPrinter {
         return f;
     }
 
-    private void createPageTitle(Journal journal, Document document, Paragraph journalName) throws DocumentException {
+    private Paragraph createAppendixTitleParagraph(){
+        Paragraph appendixTitle = new Paragraph("Consent to Publish Appendix", SUBTITLE_FONT);
+        appendixTitle.setAlignment(Chunk.ALIGN_CENTER);
+        return appendixTitle;
+    }
+
+    private Paragraph createConsentTitle(){
+        Paragraph consentTitle = new Paragraph("Consent to publish", SUBTITLE_FONT);
+        consentTitle.setAlignment(Chunk.ALIGN_CENTER);
+        return consentTitle;
+    }
+
+    private Paragraph createConsentParagraph(String consentToPublish){
+        Paragraph consentParagraph= new Paragraph(consentToPublish, TEXT_FONT);
+        return consentParagraph;
+    }
+
+    private Paragraph createFinancialDisclosureParagraph(String financialDisclosure){
+        Paragraph financialParagraph = new Paragraph("Financial disclosure", SMALL_SUBTITLE_FONT);
+        financialParagraph.add(Chunk.NEWLINE);
+        Chunk financialDislosureChunk = new Chunk(financialDisclosure, TEXT_FONT);
+        financialParagraph.add(financialDislosureChunk);
+        return financialParagraph;
+    }
+
+    private Paragraph createCorrespondigAuthorParagraph(Collection<Author> authors){
+        Paragraph correspondingParagraph = new Paragraph("Corresponding author", SMALL_SUBTITLE_FONT);
+        correspondingParagraph.add(Chunk.NEWLINE);
+        Author cAuthor = authors.iterator().next();
+        Chunk namePart = new Chunk(String.format("Name: %s %s\n",
+                cAuthor.getName(), cAuthor.getSurname()), TEXT_FONT);
+        Chunk affiliationPart = new Chunk(String.format("Affiliation: %s\n",cAuthor.getAffiliation()), TEXT_FONT);
+        Chunk addressPart = new Chunk(String.format("Address: %s %s, %s %s\n",cAuthor.getCorrespondencyData().getStreetName(),
+                cAuthor.getCorrespondencyData().getStreetNumber(), cAuthor.getCorrespondencyData().getCity(),
+                cAuthor.getCorrespondencyData().getPostalCode()), TEXT_FONT);
+        Chunk emailPart = new Chunk(String.format("E-mail: %s", cAuthor.getCorrespondencyData().getEmailAddress()), TEXT_FONT);
+        correspondingParagraph.add(TAB);
+        correspondingParagraph.add(namePart);
+        correspondingParagraph.add(TAB);
+        correspondingParagraph.add(affiliationPart);
+        correspondingParagraph.add(TAB);
+        correspondingParagraph.add(addressPart);
+        correspondingParagraph.add(TAB);
+        correspondingParagraph.add(emailPart);
+        return correspondingParagraph;
+    }
+
+    private Paragraph createPaperTitleParagraph(String paperName) {
+        Paragraph paperTitleParagraph = new Paragraph("Paper title: ", SMALL_SUBTITLE_FONT);
+        paperTitleParagraph.add(new Chunk(paperName, TEXT_FONT));
+        return paperTitleParagraph;
+    }
+
+    private Paragraph createSignParagraph() {
+        Paragraph signParagraph= new Paragraph("Date, signature of corresponding author: ", SMALL_SUBTITLE_FONT);
+        signParagraph.add(new Chunk("DREW, 2.05.2015", TEXT_FONT));
+        return signParagraph;
+    }
+
+    private Paragraph createAuthorsParagraph(Collection<Author> authors){
+        Paragraph authorsParagraph= new Paragraph("Authors: ", SMALL_SUBTITLE_FONT);
+        StringBuilder builder = new StringBuilder();
+        for(Author a: authors){
+            builder.append(String.format("%s %s, ", a.getName(), a.getSurname()));
+        }
+        authorsParagraph.add(new Chunk(builder.substring(0,builder.length()-2), TEXT_FONT));
+        return authorsParagraph;
+    }
+
+    private void constructPageTitle(Journal journal, Document document) throws DocumentException {
+        Paragraph journalName = new Paragraph(journal.getName(), TITLE_FONT);
+        journalName.setAlignment(Chunk.ALIGN_CENTER);
         if(journal.getBase64Logo()!=null) {
             try {
                 document.add(getTitleTable(journal, journalName));
@@ -129,7 +172,14 @@ public class PaperPDFPrinter {
         return table;
     }
 
-    private PdfPTable getAuthorsTable(Paper paper) throws DocumentException {
+    private Paragraph createContributionParagraph(Paper paper) throws DocumentException {
+        Paragraph contributionParagraph= new Paragraph("Contribution of the authors", SMALL_SUBTITLE_FONT);
+        contributionParagraph.add(Chunk.NEWLINE);
+        contributionParagraph.add(createContributionTable(paper));
+        return contributionParagraph;
+    }
+
+    private PdfPTable createContributionTable(Paper paper) throws DocumentException {
         PdfPTable table = new PdfPTable(4);
         table.setWidthPercentage(100);
         table.setWidths(new int[]{4, 4, 8, 2});

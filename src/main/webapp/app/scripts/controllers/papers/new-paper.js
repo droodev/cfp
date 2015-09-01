@@ -4,7 +4,7 @@ angular.module('autorApp')
   .controller('NewPaperController', function ($scope, $location, $routeParams, Restangular) {
 
     $scope.newPaper = {authors: [{}]};
-    $scope.journalID = $routeParams.journals;
+    $scope.journalID = $routeParams.id;
 
     Restangular.one('journals', $scope.journalID).get().then(
         function(ret){
@@ -26,9 +26,14 @@ angular.module('autorApp')
       for (var ind in auths) {
         if(auths[ind].corresponding === "true"){
           auths[ind].correspondencyData = $scope.contactData;
+          auths.unshift(auths.splice(ind, 1)[0]);
+          break;
         }
+      }
+      for (var ind in auths) {
         delete auths[ind].corresponding
       }
+
       Restangular.all('papers').customPOST($scope.newPaper,"",{journalID: $scope.journalID},{}).then(function(res){
         $location.path('/confirmation');
       }, function(res){

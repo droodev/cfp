@@ -76,7 +76,6 @@ public class JournalsManager {
         Journal journal = getJournal(journalId);
         if (journal != null) {
             Collection<Paper> journals = journal.getPapers();
-            System.out.println(journals.size());
             return journals;
         }
 

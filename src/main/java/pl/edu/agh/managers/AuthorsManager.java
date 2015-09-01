@@ -19,7 +19,6 @@ public class AuthorsManager {
 
     public void addAuthor(Author author) {
         if(author.getCorrespondencyData()!=null){
-            System.out.print("Correspondency data exists!");
             correspondencyDataManager.addCorrespondencyData(author.getCorrespondencyData());
         }
         em.persist(author);
