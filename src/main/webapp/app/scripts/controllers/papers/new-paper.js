@@ -29,6 +29,7 @@ angular.module('autorApp')
 
     $scope.deleteAuthor = function(index) {
       $scope.newPaper.authors.splice(index, 1);
+      $scope.updateContributionSum();
     }
 
     $scope.addPaper = function() {
