@@ -6,6 +6,7 @@ angular.module('autorApp')
     $scope.newPaper = {authors: [{}]};
     $scope.journalID = $routeParams.id;
     $scope.newPaper.authors[0].corresponding = true;
+    $scope.contributionSum = 0;
 
     Restangular.one('journals', $scope.journalID).get().then(
         function(ret){
@@ -13,6 +14,14 @@ angular.module('autorApp')
         }, function error(reason){
           alert(reason.status)
         });
+
+    $scope.updateContributionSum = function() {
+      $scope.contributionSum = 0;
+      var x;
+      for (x in $scope.newPaper.authors) {
+        $scope.contributionSum += $scope.newPaper.authors[x].contributionValue;
+      }
+    }
 
     $scope.addAuthor = function() {
       $scope.newPaper.authors.push({});

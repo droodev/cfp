@@ -27,6 +27,30 @@
 
   <div class="form-group">
     <label>Authors</label>
+    <label ng-show="newpaperForm.$submitted">
+      <fa name="exclamation-circle"
+          ng-show="newpaperForm.authorName.$error.required ||
+          newpaperForm.authorSurname.$error.required || newpaperForm.authorAffiliation.$error.required ||
+          newpaperForm.authorContribution.$error.required || newpaperForm.authorContributionValue.$error.required"
+          style="color: #a94442"
+          data-toggle="tooltip" title="All fields are required">
+      </fa>
+      <fa name="exclamation-circle"
+          ng-show="newpaperForm.authorContributionValue.$error.number"
+          style="color: #a94442"
+          data-toggle="tooltip" title="Total contribution must be a number">
+      </fa>
+      <fa name="exclamation-circle"
+          ng-show="newpaperForm.authorContributionValue.$error.min || newpaperForm.authorContributionValue.$error.max"
+          style="color: #a94442"
+          data-toggle="tooltip" title="Total contribution value must be in range 0 to 100">
+      </fa>
+      <fa name="exclamation-circle"
+          ng-show="contributionSum != 100"
+          style="color: #a94442"
+          data-toggle="tooltip" title="Total contribution sum must be 100">
+      </fa>
+    </label>
     <div class="panel panel-default">
       <div class="panel-body">
         <table class="table">
@@ -36,7 +60,7 @@
             <th style="width:20%;"><small>Surname</small></th>
             <th style="width:15%;"><small>Affiliation</small></th>
             <th style="width:30%;"><small>Contribution to the paper</small></th>
-            <th style="width:10%;"><small>Total contribution</small></th>
+            <th style="width:10%;"><small>Total contribution (%)</small></th>
             <th style="widows:3%;"><small>Corresponding author</small></th>
             <th style="width:7%;"></th>
           </tr>
@@ -44,19 +68,20 @@
           <tbody>
           <tr ng-repeat="author in newPaper.authors">
             <td >
-              <input ng-model="author.name" class="form-control">
+              <input required ng-model="author.name" name="authorName" class="form-control">
             </td>
             <td>
-              <input ng-model="author.surname" class="form-control">
+              <input required ng-model="author.surname" name="authorSurname" class="form-control">
             </td>
             <td>
-              <input ng-model="author.affiliation" class="form-control">
+              <input required ng-model="author.affiliation" name="authorAffiliation" class="form-control">
             </td>
             <td>
-              <input ng-model="author.contribution" class="form-control">
+              <input required ng-model="author.contribution" name="authorContribution" class="form-control">
             </td>
             <td>
-              <input ng-model="author.contributionValue" class="form-control">
+              <input required type="number" ng-model="author.contributionValue" name="authorContributionValue"
+                     class="form-control" min="0" max="100" ng-change="updateContributionSum()">
             </td>
             <td>
               <input type="radio" name="correspondingAuthor" ng-model="author.corresponding" ng-value="true">
@@ -83,35 +108,35 @@
     <label>Contact data of corresponding author</label>
     <div class="panel panel-default">
       <div class="panel-body">
-        <label>Street: </label>
+        <label>Street</label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreet.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactStreet.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.streetName" class="form-control" name="contactStreet" required/>
-        <label>Street number: </label>
+        <label>Street number</label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreetNumber.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactStreetNumber.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.streetNumber" class="form-control" name="contactStreetNumber" required/>
-        <label>City: </label>
+        <label>City</label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactCity.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactCity.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.city" class="form-control" name="contactCity" required/>
-        <label>PostalCode: </label>
+        <label>PostalCode</label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactPostalCode.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactPostalCode.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.postalCode" class="form-control" name="contactPostalCode" required/>
-        <label>E-mail: </label>
+        <label>E-mail</label>
         <label ng-show="newpaperForm.$submitted || newpaperForm.contactEmail.$touched">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactEmail.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
@@ -148,7 +173,7 @@
     <input required ng-model="newPaper.signature" class="form-control" name="signature"/>
   </div>
 
-  <button type="submit" ng-disabled="!newpaperForm.$valid" class="btn btn-primary pull-right" data-toggle="tooltip"
+  <button type="submit" class="btn btn-primary pull-right" data-toggle="tooltip"
           title="Confirm">
     <fa name="check"></fa>
   </button>
