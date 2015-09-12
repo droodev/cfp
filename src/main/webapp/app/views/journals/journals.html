@@ -14,10 +14,6 @@
    <div class="list-group-item" ng-repeat="journal in journals">
       <div class="container-fluid">
         <div class="row">
-          <span class="fa-stack fa-2x" ng-if='journal.base64Logo === "undefined"'>
-            <i class="fa fa-file-photo-o fa-stack-1x"></i>
-            <i class="fa fa-ban fa-stack-2x"></i>
-          </span>
           <img ng-if='journal.base64Logo !== "undefined"' data-ng-src="data:image/png;base64,{{journal.base64Logo}}" style="max-height:64px;max-width:64px;"/>
           <span>{{journal.name}}</span>
           <button type="button" class="btn btn-default pull-right" ng-click="openDeleteConfirmModal(journal)" data-toggle="tooltip"
