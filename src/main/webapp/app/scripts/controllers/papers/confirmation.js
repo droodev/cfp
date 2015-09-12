@@ -6,4 +6,5 @@ angular.module('autorApp')
   $scope.downloadPDF = function(){
     window.open(Restangular.one('papers/pdf', $routeParams.id).getRequestedUrl())
   }
+
 });
