@@ -52,6 +52,10 @@ angular.module('autorApp')
           $scope.newPaper.IPAddress = response.data.ip
           Restangular.all('papers').customPOST($scope.newPaper, "", {journalID: $scope.journalID}, {})
             .then (function (res) {
+              //That means, that 0 wes returned. It was a correct answer, 200 status OK
+              if (typeof res == 'undefined'){
+                res=0
+              }
               $location.path('/confirmation/' + res);
             }, function (res) {
               alert(res.status)
