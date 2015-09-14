@@ -22,7 +22,6 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
-      'bower_components/es5-shim/es5-shim.js',
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -35,9 +34,8 @@ module.exports = function(config) {
       'bower_components/lodash/lodash.js',
       'bower_components/restangular/dist/restangular.js',
       'bower_components/angular-fontawesome/dist/angular-fontawesome.js',
-      'bower_components/angular-file-upload/angular-file-upload.js',
-      'bower_components/ng-file-upload-shim/ng-file-upload-shim.js',
       'bower_components/angular-base64-upload/src/angular-base64-upload.js',
+      'bower_components/bootstrap-fileinput/js/fileinput.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

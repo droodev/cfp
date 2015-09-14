@@ -10,7 +10,6 @@ angular
     'restangular',
     'ngTouch',
     'picardy.fontawesome',
-    'angularFileUpload',
     'naif.base64'
   ])
   .config(function ($routeProvider, RestangularProvider) {
