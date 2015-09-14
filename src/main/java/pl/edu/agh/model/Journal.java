@@ -14,10 +14,12 @@ public class Journal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length =32676)
+    //@Column(length =32676)
+    @Column(columnDefinition="TEXT") //MySQL specific
     private String base64Logo;
     private String name;
-    @Column(length =32676)
+    //@Column(length =32676)
+    @Column(columnDefinition="TEXT") //MySQL specific
     private String consentToPublish;
 
     @OneToMany(mappedBy = "journal")

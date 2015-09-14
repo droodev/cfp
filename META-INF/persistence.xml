@@ -3,7 +3,8 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
-    <persistence-unit name="domain">
+    <!--
+    <persistence-unit name="domain)in_memory">
 
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <properties>
@@ -16,5 +17,24 @@
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
         </properties>
 
+    </persistence-unit>
+    -->
+    <persistence-unit name="domain">
+        <!--
+        To be used with resource defined on webserver!
+        <Resource id="mysqlDB" type="DataSource">
+            JdbcDriver com.mysql.jdbc.Driver
+            JdbcUrl jdbc:mysql://localhost:3306/test
+            UserName username
+            Password password
+            JtaManaged true
+        </Resource>
+        -->
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <jta-data-source>mysqlDB</jta-data-source>
+        <properties>
+            <property name="openjpa.jdbc.DBDictionary" value="mysql"/>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+        </properties>
     </persistence-unit>
 </persistence>
