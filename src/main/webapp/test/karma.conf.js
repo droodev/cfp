@@ -36,6 +36,7 @@ module.exports = function(config) {
       'bower_components/angular-fontawesome/dist/angular-fontawesome.js',
       'bower_components/angular-base64-upload/src/angular-base64-upload.js',
       'bower_components/bootstrap-fileinput/js/fileinput.min.js',
+      'bower_components/angular-modal-service/dst/angular-modal-service.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
