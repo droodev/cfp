@@ -18,7 +18,9 @@ angular.module('autorApp')
     initPlugin();
     $scope.addJournal = function() {
       if ($scope.newjournalForm.$valid) {
-        $scope.base64Logo = $scope.base64File.base64;
+        if($scope.base64File){
+          $scope.base64Logo = $scope.base64File.base64;
+        }
         Restangular.all('journals').customPOST("\"" + $scope.base64Logo + "\"", "", $scope.newJournal, {}).then(function (res) {
           $location.path('/journals');
           $route.reload();
