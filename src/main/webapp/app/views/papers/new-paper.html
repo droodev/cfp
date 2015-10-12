@@ -51,10 +51,16 @@
           data-toggle="tooltip" title="Total contribution value must be in range 0 to 100">
       </fa>
       <fa name="exclamation-circle"
-          ng-show="contributionSum !== 100"
+          ng-show="newpaperForm.authorContributionValue.$error.sum"
           style="color: #a94442"
           data-toggle="tooltip" title="Total contribution sum must be 100">
       </fa>
+      <fa name="exclamation-circle"
+          ng-show="newpaperForm.authorContributionValue.$error.pattern"
+          style="color: #a94442"
+          data-toggle="tooltip" title="Total contribution must be an integer">
+      </fa>
+      <span ng-show=>Not a valid number!</span>
     </label>
     <div class="panel panel-default">
       <div class="panel-body">
@@ -85,8 +91,8 @@
               <input required ng-model="author.contribution" name="authorContribution" class="form-control">
             </td>
             <td>
-              <input required type="number" ng-model="author.contributionValue" name="authorContributionValue"
-                     class="form-control" min="0" max="100" ng-change="updateContributionSum()">
+              <input required type="number" ng-pattern="/^\d+$/" ng-model="author.contributionValue" name="authorContributionValue"
+                     class="form-control" min="1" max="100" ng-change="updateContributionSum()" >
             </td>
             <td>
               <input type="radio" name="correspondingAuthor" ng-model="author.corresponding" ng-value="true">
@@ -178,7 +184,7 @@
     <input required ng-model="newPaper.signature" class="form-control" name="signature"/>
   </div>
 
-  <button type="submit" class="btn btn-primary pull-right" data-toggle="tooltip"
+  <button type="submit" ng-disabled="newpaperForm.$submitted && !newpaperForm.$valid"  class="btn btn-primary pull-right" data-toggle="tooltip"
           title="Confirm">
     <fa name="check"></fa>
   </button>

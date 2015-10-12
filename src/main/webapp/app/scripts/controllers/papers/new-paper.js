@@ -21,6 +21,7 @@ angular.module('autorApp')
       for (x in $scope.newPaper.authors) {
         $scope.contributionSum += $scope.newPaper.authors[x].contributionValue;
       }
+      $scope.newpaperForm.authorContributionValue.$setValidity("sum", $scope.contributionSum == 100)
     }
 
     $scope.addAuthor = function() {
