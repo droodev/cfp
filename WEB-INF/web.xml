@@ -14,9 +14,36 @@
             <param-name>cors.allowed.methods</param-name>
             <param-value>GET, POST, PUT, DELETE, OPTIONS, HEAD</param-value>
         </init-param>
+        <init-param>
+            <param-name>cors.support.credentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>CorsFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </filter-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>whole_app</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>PUT</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>adminRole</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+    <security-role>
+        <role-name>adminRole</role-name>
+    </security-role>
 </web-app>
