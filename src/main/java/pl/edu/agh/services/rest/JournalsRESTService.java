@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import java.util.Collection;
 import java.util.List;
 
-@Path("/journals")
+@Path("rest/journals")
 @Stateless
 public class JournalsRESTService {
 

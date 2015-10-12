@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-@Path("/authors")
+@Path("rest/authors")
 @Stateless
 public class AuthorsRESTService {
 

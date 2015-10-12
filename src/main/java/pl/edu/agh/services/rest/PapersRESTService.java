@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-@Path("/papers")
+@Path("rest/papers")
 @Stateless
 public class PapersRESTService {
 
