@@ -5,7 +5,7 @@ angular.module('autorApp')
 
     $scope.newPaper = {authors: [{}]};
     $scope.journalID = $routeParams.id;
-    $scope.newPaper.authors[0].corresponding = true;
+    $scope.selection = 0;
     $scope.contributionSum = 0;
 
     Restangular.one('journals', $scope.journalID).get().then(
@@ -21,7 +21,7 @@ angular.module('autorApp')
       for (x in $scope.newPaper.authors) {
         $scope.contributionSum += $scope.newPaper.authors[x].contributionValue;
       }
-      $scope.newpaperForm.authorContributionValue.$setValidity("sum", $scope.contributionSum == 100)
+      $scope.newpaperForm.$setValidity("totalSum", $scope.contributionSum == 100)
     }
 
     $scope.addAuthor = function() {
@@ -29,37 +29,31 @@ angular.module('autorApp')
     }
 
     $scope.deleteAuthor = function(index) {
+      if ($scope.selection >= index){
+        $scope.selection = $scope.selection-1
+      }
       $scope.newPaper.authors.splice(index, 1);
       $scope.updateContributionSum();
     }
 
     $scope.addPaper = function() {
-      if ($scope.newpaperForm.$valid) {
-        var auths = $scope.newPaper.authors
-        for (var ind in auths) {
-          if (auths[ind].corresponding === true) {
-            auths[ind].correspondencyData = $scope.contactData;
-            auths.unshift(auths.splice(ind, 1)[0]);
-            break;
-          }
-        }
-        for (var ind in auths) {
-          delete auths[ind].corresponding
-        }
+      if($scope.newpaperForm.$valid) {
+        $scope.newPaper.authors.unshift($scope.newPaper.authors.splice($scope.selection, 1)[0]);
+        $scope.newPaper.authors[0].correspondencyData = $scope.contactData;
 
         $scope.newPaper.signingDate = new Date().getTime()
 
         $http.get("https://api.ipify.org?format=json").then(function (response) {
           $scope.newPaper.IPAddress = response.data.ip
           Restangular.all('papers').customPOST($scope.newPaper, "", {journalID: $scope.journalID}, {})
-            .then (function (res) {
-              //That means, that 0 wes returned. It was a correct answer, 200 status OK
-              if (typeof res == 'undefined'){
-                res=0
-              }
-              $location.path('/confirmation/' + res);
-            }, function (res) {
-              alert(res.status)
-            });
+            .then(function (res) {
+            //That means, that 0 wes returned. It was a correct answer, 200 status OK
+            if (typeof res == 'undefined') {
+              res = 0
+            }
+            $location.path('/confirmation/' + res);
+          }, function (res) {
+            alert(res.status)
+          });
         });
       }}})

@@ -51,7 +51,7 @@
           data-toggle="tooltip" title="Total contribution value must be in range 0 to 100">
       </fa>
       <fa name="exclamation-circle"
-          ng-show="newpaperForm.authorContributionValue.$error.sum"
+          ng-show="newpaperForm.$error.totalSum"
           style="color: #a94442"
           data-toggle="tooltip" title="Total contribution sum must be 100">
       </fa>
@@ -91,14 +91,14 @@
               <input required ng-model="author.contribution" name="authorContribution" class="form-control">
             </td>
             <td>
-              <input required type="number" ng-pattern="/^\d+$/" ng-model="author.contributionValue" name="authorContributionValue"
+              <input required type="number" ng-pattern="/^\d+$/" ng-model="author.contributionValue"
                      class="form-control" min="1" max="100" ng-change="updateContributionSum()" >
             </td>
             <td>
-              <input type="radio" name="correspondingAuthor" ng-model="author.corresponding" ng-value="true">
+              <input type="radio" name="correspondingAuthor" ng-model="$parent.selection" ng-value="$index">
             </td>
             <td class="col-md-1">
-              <button type="button" class="btn btn-default" ng-click="deleteAuthor($index)" data-toggle="tooltip"
+              <button type="button" ng-show="$index != 0" class="btn btn-default" ng-click="deleteAuthor($index)" data-toggle="tooltip"
                       title="Delete">
                 <fa name="trash"></fa>
               </button>
@@ -120,35 +120,35 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <label>Street</label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreet.$touched">
+        <label ng-show="newpaperForm.$submitted">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactStreet.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.streetName" class="form-control" name="contactStreet" required/>
         <label>Street number</label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactStreetNumber.$touched">
+        <label ng-show="newpaperForm.$submitted">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactStreetNumber.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.streetNumber" class="form-control" name="contactStreetNumber" required/>
         <label>City</label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactCity.$touched">
+        <label ng-show="newpaperForm.$submitted">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactCity.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.city" class="form-control" name="contactCity" required/>
         <label>PostalCode</label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactPostalCode.$touched">
+        <label ng-show="newpaperForm.$submitted">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactPostalCode.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
         </label>
         <input ng-model="contactData.postalCode" class="form-control" name="contactPostalCode" required/>
         <label>E-mail</label>
-        <label ng-show="newpaperForm.$submitted || newpaperForm.contactEmail.$touched">
+        <label ng-show="newpaperForm.$submitted">
           <fa name="exclamation-circle" ng-show="newpaperForm.contactEmail.$error.required" style="color: #a94442"
               data-toggle="tooltip" title="Required field">
           </fa>
@@ -164,7 +164,7 @@
 
   <div class="form-group">
     <label>Financial disclosure</label>
-    <label ng-show="newpaperForm.$submitted || newpaperForm.financialDisclosure.$touched">
+    <label ng-show="newpaperForm.$submitted">
       <fa name="exclamation-circle" ng-show="newpaperForm.financialDisclosure.$error.required" style="color: #a94442"
           data-toggle="tooltip" title="Required field">
       </fa>
@@ -176,7 +176,7 @@
 
   <div class="form-group">
     <label>Signature</label>
-    <label ng-show="newpaperForm.$submitted || newpaperForm.signature.$touched">
+    <label ng-show="newpaperForm.$submitted">
       <fa name="exclamation-circle" ng-show="newpaperForm.signature.$error.required" style="color: #a94442"
           data-toggle="tooltip" title="Required field">
       </fa>
