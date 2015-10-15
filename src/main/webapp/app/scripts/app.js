@@ -18,9 +18,6 @@ angular
       .when('/', {
         redirectTo: '/journals'
       })
-      .when('/permDenied', {
-        templateUrl: 'views/permDenied.html'
-      })
       .when('/new_journal', {
         templateUrl: 'views/journals/new-journal.html',
         controller: 'NewJournalController'
@@ -36,7 +33,7 @@ angular
       .when('/journals/:id/new_paper', {
         templateUrl: 'views/papers/new-paper.html',
         controller: 'NewPaperController'
-      })
+      })  
       .when('/confirmation/:id', {
         templateUrl: 'views/papers/confirmation.html',
         controller: 'ConfirmationController'
@@ -44,5 +41,5 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-    RestangularProvider.setBaseUrl(location+'/rest');
+    RestangularProvider.setBaseUrl('/rest');
   });
