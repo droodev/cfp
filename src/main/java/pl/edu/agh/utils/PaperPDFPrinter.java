@@ -104,10 +104,10 @@ public class PaperPDFPrinter {
         Chunk namePart = new Chunk(String.format("Name: %s %s\n",
                 cAuthor.getName(), cAuthor.getSurname()), TEXT_FONT);
         Chunk affiliationPart = new Chunk(String.format("Affiliation: %s\n",cAuthor.getAffiliation()), TEXT_FONT);
-        Chunk addressPart = new Chunk(String.format("Address: %s %s, %s %s\n",cAuthor.getCorrespondencyData().getStreetName(),
-                cAuthor.getCorrespondencyData().getStreetNumber(), cAuthor.getCorrespondencyData().getCity(),
-                cAuthor.getCorrespondencyData().getPostalCode()), TEXT_FONT);
-        Chunk emailPart = new Chunk(String.format("E-mail: %s", cAuthor.getCorrespondencyData().getEmailAddress()), TEXT_FONT);
+        Chunk addressPart = new Chunk(String.format("Address: %s %s, %s %s\n",cAuthor.getCorrespondenceData().getStreetName(),
+                cAuthor.getCorrespondenceData().getStreetNumber(), cAuthor.getCorrespondenceData().getCity(),
+                cAuthor.getCorrespondenceData().getPostalCode()), TEXT_FONT);
+        Chunk emailPart = new Chunk(String.format("E-mail: %s", cAuthor.getCorrespondenceData().getEmailAddress()), TEXT_FONT);
         correspondingParagraph.add(TAB);
         correspondingParagraph.add(namePart);
         correspondingParagraph.add(TAB);

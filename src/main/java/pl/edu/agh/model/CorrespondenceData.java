@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CorrespondencyData {
+public class CorrespondenceData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,9 +16,10 @@ public class CorrespondencyData {
     private String streetName;
     private String streetNumber;
 
-    protected CorrespondencyData(){}
+    protected CorrespondenceData(){}
 
-    public CorrespondencyData(String emailAddress, String city, String postalCode, String streetName, String streetNumber) {
+    public CorrespondenceData(
+            String emailAddress, String city, String postalCode, String streetName, String streetNumber) {
         this.emailAddress = emailAddress;
         this.city = city;
         this.postalCode = postalCode;

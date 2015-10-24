@@ -18,8 +18,8 @@ public class AuthorsManager {
     CorrespondencyDataManager correspondencyDataManager;
 
     public void addAuthor(Author author) {
-        if(author.getCorrespondencyData()!=null){
-            correspondencyDataManager.addCorrespondencyData(author.getCorrespondencyData());
+        if(author.getCorrespondenceData()!=null){
+            correspondencyDataManager.addCorrespondencyData(author.getCorrespondenceData());
         }
         em.persist(author);
     }

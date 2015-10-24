@@ -26,8 +26,7 @@ public class Paper {
     @GSONExclude
     private Journal journal;
 
-    protected Paper() {
-    }
+    protected Paper() {}
 
     public Paper(String name, String financialDisclosure, String signature) {
         this.name = name;

@@ -1,5 +1,7 @@
 package pl.edu.agh.model;
 
+import pl.edu.agh.utils.GSONExclude;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,8 +16,8 @@ public class Author {
     private String contribution;
     private int contributionValue;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private CorrespondencyData correspondencyData;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private CorrespondenceData correspondenceData;
 
     protected Author() {
     }
@@ -52,8 +54,8 @@ public class Author {
         return id;
     }
 
-    public CorrespondencyData getCorrespondencyData() {
-        return correspondencyData;
+    public CorrespondenceData getCorrespondenceData() {
+        return correspondenceData;
     }
 
 }

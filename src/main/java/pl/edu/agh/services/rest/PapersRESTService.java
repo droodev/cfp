@@ -50,13 +50,4 @@ public class PapersRESTService {
         return new PaperPDFPrinter().getDocument(journal, paper);
     }
 
-    /*
-    @GET
-    @Path("/{id}/authors")
-    @Produces("application/json")
-    public Collection<Author> getAllAuthors(@PathParam("id") long paperID) {
-        return papersManager.getAllAuthors(paperID);
-    }
-    */
-
 }

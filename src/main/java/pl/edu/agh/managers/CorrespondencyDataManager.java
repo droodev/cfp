@@ -1,6 +1,6 @@
 package pl.edu.agh.managers;
 
-import pl.edu.agh.model.CorrespondencyData;
+import pl.edu.agh.model.CorrespondenceData;
 
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ public class CorrespondencyDataManager {
     @PersistenceContext(unitName = "domain")
     private EntityManager em;
 
-    public void addCorrespondencyData(CorrespondencyData data){
+    public void addCorrespondencyData(CorrespondenceData data){
         em.persist(data);
     }
 }
