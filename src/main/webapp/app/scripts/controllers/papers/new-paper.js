@@ -39,7 +39,7 @@ angular.module('autorApp')
     $scope.addPaper = function() {
       if($scope.newpaperForm.$valid) {
         $scope.newPaper.authors.unshift($scope.newPaper.authors.splice($scope.selection, 1)[0]);
-        $scope.newPaper.authors[0].correspondencyData = $scope.contactData;
+        $scope.newPaper.authors[0].correspondenceData = $scope.contactData;
 
         $scope.newPaper.signingDate = new Date().getTime()
 

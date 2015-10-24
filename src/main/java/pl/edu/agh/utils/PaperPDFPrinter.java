@@ -14,7 +14,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Collection;
+import java.util.UUID;
 
 public class PaperPDFPrinter {
     private static final Font TITLE_FONT = FontFactory.getFont(FontFactory.TIMES, 30);
@@ -25,20 +29,13 @@ public class PaperPDFPrinter {
     private static final Chunk TAB = new Chunk(new VerticalPositionMark(), 50, true);
 
 
-    public File getDocument(Journal journal, Paper paper){
+    public Path getDocument(Journal journal, Paper paper){
         Document document = new Document();
-        File f = new File("test.pdf");
+        File file = new File(UUID.randomUUID().toString()+".pdf");
+        Path pdfFilePath = file.toPath();
         try {
-            PdfWriter.getInstance(document, new FileOutputStream(f));
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        document.open();
-
-        try {
-
+            PdfWriter.getInstance(document, Files.newOutputStream(pdfFilePath, StandardOpenOption.CREATE));
+            document.open();
             constructPageTitle(journal, document);
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
@@ -67,9 +64,14 @@ public class PaperPDFPrinter {
 
         } catch (DocumentException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(document.isOpen()){
+                document.close();
+            }
         }
-        document.close();
-        return f;
+        return pdfFilePath;
     }
 
     private Paragraph createAppendixTitleParagraph(){

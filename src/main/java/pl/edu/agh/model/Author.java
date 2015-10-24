@@ -1,7 +1,5 @@
 package pl.edu.agh.model;
 
-import pl.edu.agh.utils.GSONExclude;
-
 import javax.persistence.*;
 
 @Entity

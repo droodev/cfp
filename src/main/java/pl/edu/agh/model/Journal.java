@@ -53,18 +53,6 @@ public class Journal {
         papers.add(paper);
     }
 
-    public void removePaper(long paperID) {
-        Paper paperToRemove = null;
-        for (Paper p : papers) {
-            if (p.getId() == paperID) {
-                paperToRemove = p;
-            }
-        }
-        if (paperToRemove != null) {
-            papers.remove(paperToRemove);
-        }
-    }
-
     public String toString() {
         return String.format("Journal:{\n%s\n%s\n%s\n}", getName(), getConsentToPublish(), getBase64Logo());
     }
