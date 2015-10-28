@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('autorApp')
+angular.module('autorAppPapers')
   .controller('NewPaperController', function ($scope, $location, $routeParams, $http, Restangular) {
 
     $scope.newPaper = {authors: [{}]};

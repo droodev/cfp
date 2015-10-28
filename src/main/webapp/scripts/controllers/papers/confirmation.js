@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('autorApp')
+angular.module('autorAppPapers')
 .controller('ConfirmationController', function ($scope, $routeParams, Restangular) {
 
   $scope.downloadPDF = function(){

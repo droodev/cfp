@@ -13,7 +13,7 @@ angular
     'naif.base64',
     'angularModalService'
   ])
-  .config(function ($routeProvider, RestangularProvider) {
+  .config(function ($routeProvider, RestangularProvider,  $locationProvider) {
     $routeProvider
       .when('/', {
         redirectTo: '/journals'
@@ -30,16 +30,8 @@ angular
         templateUrl: 'views/journals/journal-details.html',
         controller: 'JournalDetailsController'
       })
-      .when('/journals/:id/new_paper', {
-        templateUrl: 'views/papers/new-paper.html',
-        controller: 'NewPaperController'
-      })
-      .when('/confirmation/:id', {
-        templateUrl: 'views/papers/confirmation.html',
-        controller: 'ConfirmationController'
-      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/journals'
       });
     RestangularProvider.setBaseUrl('/rest');
   });

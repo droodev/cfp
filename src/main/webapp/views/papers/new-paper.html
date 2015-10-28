@@ -17,7 +17,7 @@
 <form novalidate name="newpaperForm" class="form-horizontal" ng-submit="addPaper()">
   <div class="form-group">
     <label>Paper title</label>
-    <label ng-show="newpaperForm.$submitted || newpaperForm.paperName.$touched">
+    <label ng-show="newpaperForm.$submitted">
       <fa name="exclamation-circle" ng-show="newpaperForm.paperName.$error.required" style="color: #a94442"
           data-toggle="tooltip" title="Required field">
       </fa>

@@ -7,6 +7,7 @@ angular.module('autorApp')
       function(ret){
         $scope.journal = ret;
         $scope.addingLink = getAddingLink();
+        $scope.notSecuredAddingLink = getNotSecuredAddingLink();
       }, function error(reason){
         alert(reason.status)
       });
@@ -45,7 +46,12 @@ angular.module('autorApp')
     }
 
     var getAddingLink = function(){
-      return $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/journals/" +
-          $scope.journal.id + "/new_paper"
+      return $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/adding.html#/" +
+          $scope.journal.id
     }
-});
+
+    var getNotSecuredAddingLink = function(){
+      return "http://" + $location.host() + "/adding.html#/" +
+        $scope.journal.id
+    }
+});l
